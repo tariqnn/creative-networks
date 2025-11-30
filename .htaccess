@@ -1,35 +1,58 @@
 # Hostinger Next.js Configuration
 # This file handles routing and redirects for Next.js on Hostinger
+# IMPORTANT: All /_next/ paths MUST be served by Node.js, not Apache
 
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # CRITICAL: Bypass Apache for Next.js static files and chunks
+  # These paths MUST be proxied to Node.js, not rewritten
+  RewriteCond %{REQUEST_URI} ^/_next/static/ [OR]
+  RewriteCond %{REQUEST_URI} ^/_next/webpack/ [OR]
+  RewriteCond %{REQUEST_URI} ^/_next/data/
+  RewriteRule ^ - [L]
+
+  # Exclude all /_next/ paths from other rewrite rules
+  RewriteCond %{REQUEST_URI} ^/_next/
+  RewriteRule ^ - [L]
 
   # Handle Next.js API routes
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^api/(.*)$ /api/$1 [L]
 
-  # Handle Next.js pages
+  # Handle Next.js pages (only for non-static, non-API paths)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteCond %{REQUEST_URI} !^/api/
   RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
 
-# Security Headers
+# Security Headers (exclude /_next/ paths - let Node.js handle them)
 <IfModule mod_headers.c>
-  # XSS Protection
-  Header set X-XSS-Protection "1; mode=block"
-  # Prevent MIME type sniffing
-  Header set X-Content-Type-Options "nosniff"
-  # Clickjacking protection
-  Header set X-Frame-Options "SAMEORIGIN"
-  # Referrer Policy
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Exclude Next.js static files from security headers
+  <LocationMatch "^/_next/">
+    Header unset X-XSS-Protection
+    Header unset X-Content-Type-Options
+    Header unset X-Frame-Options
+    Header unset Referrer-Policy
+  </LocationMatch>
+
+  # Apply security headers only to HTML pages
+  <FilesMatch "\.(html|htm)$">
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+  </FilesMatch>
 </IfModule>
 
-# Compression
+# Compression (exclude /_next/ paths - let Node.js handle compression)
 <IfModule mod_deflate.c>
+  # Don't compress Next.js static files - let Node.js handle it
+  SetEnvIf Request_URI "^/_next/" no-gzip
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
 

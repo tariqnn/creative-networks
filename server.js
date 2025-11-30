@@ -24,14 +24,26 @@ app.prepare().then(() => {
     try {
       // Parse the request URL
       const parsedUrl = parse(req.url, true)
-      const { pathname, query } = parsedUrl
+      const { pathname } = parsedUrl
+
+      // Set proper cache headers for static files
+      const isStaticFile = pathname?.startsWith('/_next/static/') || 
+                          pathname?.startsWith('/_next/webpack/') ||
+                          pathname?.startsWith('/_next/data/') ||
+                          pathname?.match(/\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|mp4|webm)$/i)
+      
+      if (isStaticFile) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
+      }
 
       // Handle Next.js requests
       await handle(req, res, parsedUrl)
     } catch (err) {
       console.error('Error occurred handling', req.url, err)
-      res.statusCode = 500
-      res.end('Internal server error')
+      if (!res.headersSent) {
+        res.statusCode = 500
+        res.end('Internal server error')
+      }
     }
   }).listen(port, hostname, (err) => {
     if (err) {

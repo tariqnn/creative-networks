@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, Cairo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import StructuredData from '@/components/SEO/StructuredData'
+import ChunkErrorHandler from '@/components/ChunkErrorHandler'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -114,6 +115,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${cairo.variable} antialiased`}>
+        <ChunkErrorHandler />
         <StructuredData />
         <LanguageProvider>
           {children}
