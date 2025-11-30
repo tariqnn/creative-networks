@@ -1,224 +1,125 @@
-# Hostinger Deployment Guide for Creative Networks Website
+# Hostinger Deployment Guide
 
-This guide will help you deploy your Next.js website to Hostinger.
+## Quick Setup Instructions
 
-## Prerequisites
+1. **Upload Files to Hostinger**
+   - Upload all project files to your Hostinger Node.js hosting directory
+   - Ensure `server.js` is in the root directory
 
-- Hostinger hosting account with Node.js support (Business or higher plan recommended)
-- Domain name configured
-- FTP/SSH access to your Hostinger account
-
-## Deployment Options
-
-### Option 1: Node.js Hosting (Recommended)
-
-If your Hostinger plan supports Node.js applications:
-
-#### Step 1: Prepare Your Files
-
-1. **Build the project locally:**
+2. **Install Dependencies**
    ```bash
    npm install
-   npm run build
    ```
 
-2. **Create a `.env.production` file** with your production environment variables:
-   ```
-   RESEND_API_KEY=your_production_resend_api_key
-   NODE_ENV=production
-   PORT=3000
-   ```
-
-#### Step 2: Upload Files to Hostinger
-
-1. **Via File Manager or FTP:**
-   - Upload the entire project folder to your Hostinger hosting
-   - Recommended location: `public_html/` or a subdirectory
-
-2. **Required files/folders to upload:**
-   ```
-   ├── .next/          (build output - generated after npm run build)
-   ├── app/
-   ├── components/
-   ├── contexts/
-   ├── public/
-   ├── node_modules/   (or install on server)
-   ├── package.json
-   ├── package-lock.json
-   ├── next.config.js
-   ├── tsconfig.json
-   ├── tailwind.config.ts
-   ├── postcss.config.js
-   └── .env.production (create this with your production keys)
-   ```
-
-#### Step 3: Configure Node.js on Hostinger
-
-1. **Access Hostinger Control Panel (hPanel)**
-2. **Go to Node.js section**
-3. **Create a new Node.js application:**
-   - Application Root: `/public_html` (or your subdirectory)
-   - Application URL: Your domain
-   - Application Startup File: `server.js` or use the standalone server
-   - Node.js Version: 18.x or 20.x (recommended)
-
-4. **Set Environment Variables in hPanel:**
-   - `NODE_ENV=production`
-   - `PORT=3000` (or the port Hostinger assigns)
-   - `RESEND_API_KEY=your_resend_api_key`
-
-#### Step 4: Install Dependencies and Start
-
-1. **SSH into your Hostinger account** (if available)
-2. **Navigate to your project directory:**
-   ```bash
-   cd public_html
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   npm install --production
-   ```
-
-4. **Build the application:**
+3. **Build the Project**
    ```bash
    npm run build
    ```
 
-5. **Start the application:**
+4. **Start the Server**
    ```bash
    npm start
    ```
-
-#### Step 5: Configure Domain
-
-1. Point your domain to the Node.js application URL
-2. Update DNS settings if needed
-3. Enable SSL certificate (Let's Encrypt) in hPanel
-
----
-
-### Option 2: Static Export (Alternative - Limited Functionality)
-
-⚠️ **Note:** This option will NOT work with API routes (contact form). Use only if you don't need the contact form functionality.
-
-1. **Update `next.config.js`:**
-   ```javascript
-   const nextConfig = {
-     output: 'export',
-     // ... rest of config
-   }
-   ```
-
-2. **Build static files:**
+   Or use the production script:
    ```bash
-   npm run build
+   npm run start:prod
    ```
-
-3. **Upload the `out/` folder** to `public_html/` on Hostinger
-
----
 
 ## Configuration Files
 
-### `.env.production`
+### ✅ Already Configured:
 
-Create this file in your project root with production values:
+1. **`server.js`** - Custom Node.js server for Hostinger
+   - Configured to run on port 3000 (or PORT environment variable)
+   - Handles static files correctly
+   - Production mode enabled
 
-```env
-RESEND_API_KEY=re_your_production_api_key_here
-NODE_ENV=production
-NEXT_PUBLIC_SITE_URL=https://creativenetworkservices.com
-```
+2. **`.htaccess`** - Apache configuration
+   - Bypasses Apache for `/_next/` paths
+   - Routes requests to Node.js correctly
 
-### Server Configuration
+3. **`next.config.js`** - Next.js configuration
+   - Standalone output mode
+   - Proper cache headers
+   - Production optimizations
 
-If Hostinger provides a `server.js` file, you can use:
+4. **`app/api/contact/route.ts`** - Email form API
+   - Resend API key is hardcoded (no environment variables needed)
+   - Sends emails to: `info@creativenetworkservices.com`
 
-```javascript
-const { createServer } = require('http')
-const { parse } = require('url')
-const next = require('next')
+## Email Form Configuration
 
-const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
-const port = process.env.PORT || 3000
+The contact form is **already configured** and will work immediately:
+- **API Key**: Hardcoded in `app/api/contact/route.ts`
+- **Recipient**: `info@creativenetworkservices.com`
+- **No environment variables needed**
 
-const app = next({ dev, hostname, port })
-const handle = app.getRequestHandler()
+## Important Notes
 
-app.prepare().then(() => {
-  createServer(async (req, res) => {
-    try {
-      const parsedUrl = parse(req.url, true)
-      await handle(req, res, parsedUrl)
-    } catch (err) {
-      console.error('Error occurred handling', req.url, err)
-      res.statusCode = 500
-      res.end('internal server error')
-    }
-  }).listen(port, (err) => {
-    if (err) throw err
-    console.log(`> Ready on http://${hostname}:${port}`)
-  })
-})
-```
+1. **Node.js Version**: Ensure Hostinger supports Node.js 18+ (check in Hostinger control panel)
 
----
+2. **Port Configuration**: 
+   - Default port: 3000
+   - Can be changed via `PORT` environment variable in Hostinger
 
-## Post-Deployment Checklist
+3. **Static Files**: 
+   - All `/_next/static/` files are served by Node.js (not Apache)
+   - This is configured in `.htaccess`
 
-- [ ] Verify website loads correctly
-- [ ] Test contact form submission
-- [ ] Check all images load properly
-- [ ] Verify mobile responsiveness
-- [ ] Test language switcher (EN/AR)
-- [ ] Check SEO meta tags
-- [ ] Verify SSL certificate is active
-- [ ] Test WhatsApp floating button
-- [ ] Check all navigation links work
-- [ ] Verify sitemap.xml is accessible
-- [ ] Test robots.txt
-
----
+4. **Build Output**: 
+   - Build creates `.next` folder with standalone output
+   - Server.js uses this for production
 
 ## Troubleshooting
 
-### Issue: Application won't start
-- Check Node.js version (should be 18.x or 20.x)
-- Verify all dependencies are installed
-- Check environment variables are set correctly
-- Review Hostinger error logs
+### If static files return 400 errors:
+- Check `.htaccess` is uploaded correctly
+- Verify Apache is configured to proxy to Node.js
+- Contact Hostinger support if issues persist
 
-### Issue: API routes not working
-- Ensure you're using Node.js hosting (not static export)
-- Check API route paths are correct
-- Verify environment variables are set
+### If email form doesn't work:
 - Check server logs for errors
+- Verify Resend API key is valid
+- Check that `resend` package is installed
 
-### Issue: Images not loading
-- Verify `public/` folder is uploaded correctly
-- Check image paths in components
-- Ensure Next.js Image optimization is configured
+### If server won't start:
+- Check Node.js version (should be 18+)
+- Verify `npm install` completed successfully
+- Check port 3000 is available
+- Review server logs for errors
 
-### Issue: Build fails
-- Check Node.js version compatibility
-- Verify all dependencies are compatible
-- Review build error messages
-- Try clearing `.next` folder and rebuilding
+## File Structure
 
----
+```
+/
+├── app/                    # Next.js app directory
+│   ├── api/
+│   │   └── contact/        # Contact form API
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Home page
+├── components/             # React components
+├── public/                 # Static assets
+├── server.js               # Node.js server (IMPORTANT)
+├── .htaccess               # Apache config (IMPORTANT)
+├── next.config.js          # Next.js config
+├── package.json            # Dependencies
+└── .next/                  # Build output (generated)
+```
+
+## Deployment Checklist
+
+- [x] Server.js configured for production
+- [x] .htaccess configured for Next.js
+- [x] Email API key hardcoded (no env vars needed)
+- [x] Next.js standalone output configured
+- [x] Static file caching configured
+- [x] Build script ready
+- [x] Start script configured
 
 ## Support
 
-For Hostinger-specific issues, contact Hostinger support.
-For application issues, check the error logs in hPanel.
-
----
-
-## Additional Resources
-
-- [Next.js Deployment Documentation](https://nextjs.org/docs/deployment)
-- [Hostinger Node.js Guide](https://www.hostinger.com/tutorials/how-to-deploy-node-js-application)
-- [Hostinger Support](https://www.hostinger.com/contact)
-
+If you encounter any issues:
+1. Check server logs in Hostinger
+2. Verify all files are uploaded correctly
+3. Ensure Node.js version is 18+
+4. Contact Hostinger support for server configuration issues

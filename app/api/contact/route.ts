@@ -85,27 +85,9 @@ This email was sent from the Creative Networks website contact form.
 Priority: High - Please respond promptly.
     `.trim()
 
-    // Check if API key is configured
-    const apiKey = process.env.RESEND_API_KEY
-    
-    if (!apiKey || apiKey === 're_placeholder_key') {
-      console.log('⚠️ RESEND_API_KEY not configured. Email data:', {
-        to: recipientEmail,
-        subject,
-        from: 'onboarding@resend.dev',
-        html: htmlContent,
-        text: textContent,
-      })
-      
-      return NextResponse.json(
-        { 
-          success: true, 
-          message: 'Form submitted successfully. Note: Email sending requires RESEND_API_KEY to be configured.',
-          warning: 'Email not sent - API key not configured'
-        },
-        { status: 200 }
-      )
-    }
+    // Resend API Key - configured for Hostinger deployment
+    // Using hardcoded key for easy deployment without environment variables
+    const apiKey = process.env.RESEND_API_KEY || 're_bXo9WkKj_CdV53smmso7sEYDv5MNEVEtA'
 
     // Initialize Resend with API key
     const resend = new Resend(apiKey)
