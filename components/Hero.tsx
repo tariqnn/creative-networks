@@ -23,19 +23,9 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <iframe
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-125 w-[177.78vh] h-[56.25vw] min-w-full min-h-full pointer-events-none"
-          src="https://www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&loop=1&playlist=RR2EI8EEOOw&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&start=0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          style={{
-            border: 'none',
-            zIndex: 0,
-          }}
-        />
-        <div className="absolute inset-0 bg-bg-main/70 z-[1]" />
+      {/* Static Background - Simple gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-bg-dark via-bg-main to-bg-dark">
+        <div className="absolute inset-0 bg-bg-main/80 z-[1]" />
       </div>
 
       {/* Animated gradient blobs overlay */}
