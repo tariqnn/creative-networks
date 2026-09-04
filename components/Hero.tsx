@@ -87,12 +87,12 @@ export default function Hero() {
         </div>
 
         {/* Interactive 3D card — per integration prompt */}
-        <Card className="w-full h-[500px] md:h-[560px] bg-black/[0.96] relative overflow-hidden border-white/10 rounded-2xl mt-6">
+        <Card className="w-full bg-black/[0.96] relative overflow-hidden border-white/10 rounded-2xl mt-6 md:h-[560px]">
           <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
-          <div className="flex flex-col md:flex-row h-full">
+          <div className="flex flex-col md:flex-row md:h-full">
             {/* Left content */}
-            <div className="flex-1 p-8 md:p-12 relative z-10 flex flex-col justify-center">
+            <div className="flex-1 p-6 sm:p-8 md:p-12 relative z-10 flex flex-col justify-center">
               <h2 className="text-4xl md:text-5xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
                 Interactive 3D
               </h2>
@@ -128,7 +128,7 @@ export default function Hero() {
               </div>
 
               {/* Stats */}
-              <div className="flex items-center gap-8 mt-10 pt-6 border-t border-white/[0.08]">
+              <div className="flex items-center gap-6 sm:gap-8 mt-10 pt-6 border-t border-white/[0.08]">
                 {[
                   { value: '5+', label: 'Years' },
                   { value: '50+', label: 'Projects' },
@@ -143,7 +143,7 @@ export default function Hero() {
             </div>
 
             {/* Right — 3D scene */}
-            <div className="flex-1 relative min-h-[300px] md:min-h-0">
+            <div className="relative h-[300px] sm:h-[380px] md:h-auto md:flex-1 md:min-h-0">
               <SplineScene
                 scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                 className="w-full h-full"

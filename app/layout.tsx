@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Outfit, Rubik, Cairo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
@@ -105,6 +105,10 @@ export const metadata: Metadata = {
     'geo.position': '31.9539;35.9106',
     'ICBM': '31.9539, 35.9106',
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#09090B',
 }
 
 export default function RootLayout({
