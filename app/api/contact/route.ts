@@ -87,7 +87,7 @@ Priority: High - Please respond promptly.
 
     // Resend API Key - configured for Hostinger deployment
     // Using hardcoded key for easy deployment without environment variables
-    const apiKey = process.env.RESEND_API_KEY || 're_bXo9WkKj_CdV53smmso7sEYDv5MNEVEtA'
+    const apiKey = process.env.RESEND_API_KEY || 're_3U5fXFcd_8xpLsbbXmht3Q2RdEtqBJMrC'
 
     // Initialize Resend with API key
     const resend = new Resend(apiKey)
