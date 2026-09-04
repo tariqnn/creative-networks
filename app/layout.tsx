@@ -1,20 +1,20 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Inter, Cairo } from 'next/font/google'
+import { Outfit, Rubik, Cairo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import StructuredData from '@/components/SEO/StructuredData'
 import ChunkErrorHandler from '@/components/ChunkErrorHandler'
 
-const spaceGrotesk = Space_Grotesk({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
-  weight: ['400', '500', '600', '700'],
+  variable: '--font-outfit',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
 })
 
-const inter = Inter({
+const rubik = Rubik({
   subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['400', '500', '600', '700'],
+  variable: '--font-rubik',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const cairo = Cairo({
@@ -114,7 +114,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr">
-      <body className={`${spaceGrotesk.variable} ${inter.variable} ${cairo.variable} antialiased`}>
+      <body className={`${outfit.variable} ${rubik.variable} ${cairo.variable} antialiased`}>
         <ChunkErrorHandler />
         <StructuredData />
         <LanguageProvider>
@@ -124,4 +124,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -27,7 +27,7 @@ const translations = {
       create: 'Create.',
       build: 'Build.',
       launch: 'Launch.',
-      tagline: 'Fastest in the Region',
+      tagline: 'Built in Amman. Made for the Region.',
       subtitle: 'Serving the MENA Region and beyond',
     },
     services: {

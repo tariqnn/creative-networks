@@ -45,13 +45,13 @@
 
 4. **`app/api/contact/route.ts`** - Email form API
    - Resend API key is hardcoded (no environment variables needed)
-   - Sends emails to: `info@creativenetworkservices.com`
+   - Sends emails to: `info@creativnetworks.com`
 
 ## Email Form Configuration
 
 The contact form is **already configured** and will work immediately:
 - **API Key**: Hardcoded in `app/api/contact/route.ts`
-- **Recipient**: `info@creativenetworkservices.com`
+- **Recipient**: `info@creativnetworks.com`
 - **No environment variables needed**
 
 ## Important Notes

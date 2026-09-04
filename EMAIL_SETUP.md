@@ -30,7 +30,7 @@
 - ✅ HTML formatted email with professional styling
 - ✅ Plain text fallback
 - ✅ Proper email headers to avoid spam
-- ✅ Sends to: info@creativenetworkservices.com
+- ✅ Sends to: info@creativnetworks.com
 
 ## Testing
 

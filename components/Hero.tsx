@@ -3,96 +3,158 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { SplineScene } from '@/components/ui/splite'
+import { Spotlight } from '@/components/ui/spotlight'
+import { Card } from '@/components/ui/card'
 
 export default function Hero() {
   const { t } = useLanguage()
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [isMounted, setIsMounted] = useState(false)
 
   const words = [t('hero.create'), t('hero.build'), t('hero.launch')]
 
   useEffect(() => {
-    setIsMounted(true)
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % words.length)
     }, 2500)
-
     return () => clearInterval(interval)
   }, [words.length])
+
+  const handleScroll = (href: string) => {
+    const el = document.querySelector(href)
+    if (el) {
+      const offset = 80
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+  }
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-surface-950 pt-24 pb-16"
     >
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {isMounted && (
-          <video
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover pointer-events-none"
-            src="/videoTOuse.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            suppressHydrationWarning
-            onEnded={(e) => {
-              // Ensure infinite loop - restart video if it ends
-              e.currentTarget.currentTime = 0
-              e.currentTarget.play()
-            }}
-          />
-        )}
-        <div className="absolute inset-0 bg-bg-main/70 z-[1]" />
+      {/* Ambient orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/[0.08] rounded-full blur-[120px] animate-glow" />
+        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-cyan/[0.06] rounded-full blur-[100px] animate-glow" style={{ animationDelay: '2s' }} />
       </div>
 
-      {/* Animated gradient blobs */}
-      <div className="absolute inset-0 overflow-hidden z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-purple/20 rounded-full blur-3xl animate-hero-gradient" />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-primary/15 rounded-full blur-3xl animate-hero-gradient"
-          style={{ animationDelay: '1s' }}
-        />
-        <div
-          className="absolute top-1/2 right-1/3 w-72 h-72 bg-accent-secondary/15 rounded-full blur-3xl animate-hero-gradient"
-          style={{ animationDelay: '2s' }}
-        />
-      </div>
+      {/* Grid texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
 
-      {/* Text Content */}
-      <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8">
-        <AnimatePresence mode="wait">
-          <motion.h1
-            key={currentWordIndex}
-            initial={{ opacity: 0, y: 15, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.6, ease: 'easeInOut' }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-bold text-text-primary mb-8 tracking-tight"
-            style={{
-              textShadow:
-                '0 0 40px rgba(0, 168, 232, 0.3), 0 0 80px rgba(0, 168, 232, 0.2)',
-            }}
-          >
-            {words[currentWordIndex]}
-          </motion.h1>
-        </AnimatePresence>
-
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="space-y-2"
+          transition={{ duration: 0.4 }}
+          className="flex justify-center mb-8"
         >
-          <p className="text-lg sm:text-xl md:text-2xl text-text-secondary font-body">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-accent/20 text-accent-light text-xs font-semibold uppercase tracking-wider w-fit">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             {t('hero.tagline')}
-          </p>
-          <p className="text-base sm:text-lg md:text-xl text-text-secondary/80 font-body">
-            {t('hero.subtitle')}
-          </p>
+          </div>
         </motion.div>
+
+        {/* Rotating gradient word */}
+        <div className="text-center mb-4">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={currentWordIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="text-7xl sm:text-8xl md:text-9xl font-heading font-black tracking-tight leading-[0.9] inline-block"
+              style={{
+                background: 'linear-gradient(to right, #818CF8, #22D3EE, #34D399)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {words[currentWordIndex]}
+            </motion.h1>
+          </AnimatePresence>
+        </div>
+
+        {/* Interactive 3D card — per integration prompt */}
+        <Card className="w-full h-[500px] md:h-[560px] bg-black/[0.96] relative overflow-hidden border-white/10 rounded-2xl mt-6">
+          <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+
+          <div className="flex flex-col md:flex-row h-full">
+            {/* Left content */}
+            <div className="flex-1 p-8 md:p-12 relative z-10 flex flex-col justify-center">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+                Interactive 3D
+              </h2>
+              <p className="mt-4 text-neutral-300 max-w-lg text-base md:text-lg leading-relaxed">
+                {t('hero.subtitle')}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                <motion.a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleScroll('#contact')
+                  }}
+                  whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(99,102,241,0.4)' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-7 py-3.5 rounded-full bg-accent text-white font-heading font-bold text-sm cursor-pointer hover:bg-accent-dark transition-colors duration-200 text-center"
+                >
+                  Start a project
+                </motion.a>
+                <motion.a
+                  href="#portfolio"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleScroll('#portfolio')
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-7 py-3.5 rounded-full glass text-surface-300 font-heading font-medium text-sm cursor-pointer hover:text-surface-50 transition-colors duration-200 text-center"
+                >
+                  View our work →
+                </motion.a>
+              </div>
+
+              {/* Stats */}
+              <div className="flex items-center gap-8 mt-10 pt-6 border-t border-white/[0.08]">
+                {[
+                  { value: '5+', label: 'Years' },
+                  { value: '50+', label: 'Projects' },
+                  { value: '30+', label: 'Clients' },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-2xl font-heading font-black text-surface-50">{stat.value}</p>
+                    <p className="text-xs text-surface-500 uppercase tracking-wider">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — 3D scene */}
+            <div className="flex-1 relative min-h-[300px] md:min-h-0">
+              <SplineScene
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </Card>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface-950 to-transparent pointer-events-none" />
     </section>
   )
 }

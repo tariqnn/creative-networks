@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Email configuration
-    const recipientEmail = 'info@creativenetworkservices.com'
+    const recipientEmail = 'info@creativnetworks.com'
     const subject = `New Contact Form Submission from ${name}`
     
     // Format the email content - HTML version for better formatting

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime'],
   // Production-safe configuration for Hostinger Node.js hosting
   // Using 'standalone' output for optimized deployment
   // No assetPrefix or basePath - Next.js serves from root path

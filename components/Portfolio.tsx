@@ -8,241 +8,188 @@ const portfolioItems = [
   {
     label: 'Sports Academy Platform',
     name: 'SD13',
-    description:
-      'A modern sports academy platform with high-performance landing page and full administrative system for content and athlete management.',
-    impact:
-      'Increased online registrations by 45% and reduced manual coordination time for coaches by 30%.',
-    features: [
-      'High-speed landing page',
-      'Full admin panel',
-      'Multi-role permissions',
-      'Analytics tracking',
-    ],
+    description: 'A modern sports academy platform with high-performance landing page and full administrative system for content and athlete management.',
+    impact: 'Increased online registrations by 45% and reduced manual coordination time for coaches by 30%.',
+    features: ['High-speed landing page', 'Full admin panel', 'Multi-role permissions', 'Analytics tracking'],
     tech: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
     image: '/clients/client-1.png',
+    accentColor: 'from-accent/20 to-transparent',
+    metricColor: 'text-accent-light',
+    metric: '+45%',
+    metricLabel: 'Registrations',
   },
   {
     label: 'Full Facility System',
     name: 'Infinity Sport',
-    description:
-      'Complete system for the whole facility including landing page, finance management for tracking payments and invoices, and internal portal for staff operations.',
-    impact:
-      'Cut payment tracking time in half and gave management real-time visibility on all revenue streams.',
-    features: [
-      'Landing page',
-      'Finance dashboard',
-      'Internal portal',
-      'Real-time metrics',
-    ],
+    description: 'Complete system for the whole facility including landing page, finance management for tracking payments and invoices, and internal portal for staff operations.',
+    impact: 'Cut payment tracking time in half and gave management real-time visibility on all revenue streams.',
+    features: ['Landing page', 'Finance dashboard', 'Internal portal', 'Real-time metrics'],
     tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
     image: '/clients/client 3.jpeg',
+    accentColor: 'from-cyan/20 to-transparent',
+    metricColor: 'text-cyan',
+    metric: '50%',
+    metricLabel: 'Time Saved',
   },
   {
     label: 'Healthcare Mobile App',
     name: 'Sahati Link',
-    subtitle: 'Mustashfa Amal Hospital',
-    description:
-      'Healthcare communication system connecting patients with doctors through chat, calls, and secure HD video consultations with online booking.',
-    impact:
-      'Reduced missed appointments by 35% and improved patient response times with instant communication tools.',
-    features: [
-      'Real-time communication',
-      'HD video calls',
-      'Online appointments',
-      'HIPAA-grade security',
-    ],
+    description: 'Healthcare communication system connecting patients with doctors through chat, calls, and secure HD video consultations with online booking.',
+    impact: 'Reduced missed appointments by 35% and improved patient response times with instant communication tools.',
+    features: ['Real-time communication', 'HD video calls', 'Online appointments', 'HIPAA-grade security'],
     tech: ['React Native', 'Node.js', 'WebRTC', 'MongoDB', 'AWS'],
     image: '/clients/client-2.png',
+    accentColor: 'from-emerald/20 to-transparent',
+    metricColor: 'text-emerald',
+    metric: '-35%',
+    metricLabel: 'Missed Appts',
   },
   {
     label: 'E-Commerce Platform',
     name: 'Nexora Market',
-    tagline: 'A high-performance ecommerce engine built for scale and real-time reliability.',
-    description:
-      'We developed an advanced ecommerce platform featuring secure user authentication, dynamic product listings, and a seamless cart and checkout experience. Firebase was integrated for real-time stock and order updates, and AWS ensured enterprise-level performance.',
-    impact:
-      '40% faster load times, reduced cart abandonment, and zero overselling thanks to real-time data syncing.',
-    features: [
-      'Secure authentication & role-based management',
-      'Live inventory and order syncing',
-      'Dynamic product catalog',
-      'Optimized checkout flow',
-    ],
+    description: 'Advanced ecommerce platform featuring secure user authentication, dynamic product listings, and a seamless cart and checkout experience with real-time stock syncing.',
+    impact: '40% faster load times, reduced cart abandonment, and zero overselling thanks to real-time data syncing.',
+    features: ['Secure auth & role management', 'Live inventory syncing', 'Dynamic product catalog', 'Optimized checkout'],
     tech: ['Laravel', 'React', 'JavaScript', 'AWS', 'Firebase'],
-    image: undefined, // Add /clients/nexora.png when available
+    image: undefined,
+    accentColor: 'from-accent/20 to-transparent',
+    metricColor: 'text-accent-light',
+    metric: '+40%',
+    metricLabel: 'Faster Loads',
   },
   {
-    label: 'Social Media Analytics Dashboard',
+    label: 'Social Media Analytics',
     name: 'PulseMetrics',
-    tagline: 'A real-time analytics dashboard built for content creators and marketing teams.',
-    description:
-      'We built a clean and intuitive dashboard that visualizes engagement, impressions, reach trends, and content KPIs in real-time. TypeScript ensured reliability while Google Cloud delivered global performance.',
-    impact:
-      'Teams reduced reporting time by 70% and gained actionable insights instantly.',
-    features: [
-      'Real-time analytics and charts',
-      'Engagement and content performance tracking',
-      'Multi-channel integration',
-      'Clean UI with smooth transitions',
-    ],
+    description: 'A real-time analytics dashboard that visualizes engagement, impressions, reach trends, and content KPIs for content creators and marketing teams.',
+    impact: 'Teams reduced reporting time by 70% and gained actionable insights instantly.',
+    features: ['Real-time analytics', 'Content performance tracking', 'Multi-channel integration', 'Smooth transitions'],
     tech: ['React', 'TypeScript', 'Google Cloud'],
     image: undefined,
+    accentColor: 'from-cyan/20 to-transparent',
+    metricColor: 'text-cyan',
+    metric: '-70%',
+    metricLabel: 'Report Time',
   },
   {
     label: 'Gym Website & Mobile App',
     name: 'FlexMotion Fitness',
-    tagline: 'A unified mobile and web platform for modern gyms.',
-    description:
-      'We designed a responsive website and Flutter mobile app with class scheduling, membership management, and personal workout plans. Firebase powered secure authentication and instant updates across all devices.',
-    impact:
-      'Class bookings increased by 52% and user engagement dramatically improved.',
-    features: [
-      'Class booking and scheduling',
-      'Membership and subscription management',
-      'Personalized workout programs',
-      'Real-time push notifications',
-    ],
+    description: 'A responsive website and Flutter mobile app with class scheduling, membership management, and personal workout plans powered by Firebase.',
+    impact: 'Class bookings increased by 52% and user engagement dramatically improved.',
+    features: ['Class booking & scheduling', 'Membership management', 'Personalized programs', 'Push notifications'],
     tech: ['Flutter', 'Firebase'],
     image: undefined,
+    accentColor: 'from-emerald/20 to-transparent',
+    metricColor: 'text-emerald',
+    metric: '+52%',
+    metricLabel: 'Bookings',
   },
   {
-    label: 'AI-Powered CRM Dashboard',
+    label: 'AI-Powered CRM',
     name: 'Skyline Enterprises',
-    tagline: 'An intelligent CRM system powered by automation and AI insights.',
-    description:
-      'We built a full enterprise CRM system with AI-driven lead scoring, automated email drafting, document summarization, and sentiment analysis. Designed dashboards for Sales, Support, and Management teams.',
-    impact:
-      'Response times dropped to under 30 seconds and closures improved by 38%.',
-    features: [
-      'AI-powered lead scoring',
-      'Smart email drafting and auto-replies',
-      'Advanced reporting dashboards',
-      'Secure role-based access',
-    ],
+    description: 'Full enterprise CRM with AI-driven lead scoring, automated email drafting, document summarization, and sentiment analysis across Sales, Support, and Management.',
+    impact: 'Response times dropped to under 30 seconds and closures improved by 38%.',
+    features: ['AI lead scoring', 'Smart email drafting', 'Advanced reporting', 'Role-based access'],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'OpenAI API'],
     image: undefined,
+    accentColor: 'from-accent/20 to-transparent',
+    metricColor: 'text-accent-light',
+    metric: '+38%',
+    metricLabel: 'Close Rate',
   },
   {
-    label: 'Online Learning & Examination Platform',
+    label: 'Online Learning Platform',
     name: 'EduNova Academy',
-    tagline: 'A complete LMS with real-time proctored online exams.',
-    description:
-      'We developed a robust LMS with video lectures, assignments, quizzes, student analytics, and administrator dashboards. Integrated a real-time WebRTC proctoring system to eliminate cheating.',
-    impact:
-      'Hosted over 4,000 students in the first month and reduced admin workload by 70%.',
-    features: [
-      'Video courses and progress tracking',
-      'Online exams with webcam monitoring',
-      'Certificates and achievements system',
-      'AI-powered study recommendations',
-    ],
+    description: 'A robust LMS with video lectures, assignments, quizzes, student analytics, and a real-time WebRTC proctoring system for online examinations.',
+    impact: 'Hosted over 4,000 students in the first month and reduced admin workload by 70%.',
+    features: ['Video courses', 'Webcam-proctored exams', 'Certificates & achievements', 'AI study recommendations'],
     tech: ['MERN Stack', 'WebRTC'],
     image: undefined,
+    accentColor: 'from-cyan/20 to-transparent',
+    metricColor: 'text-cyan',
+    metric: '4,000+',
+    metricLabel: 'Students',
   },
 ]
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 sm:py-32 bg-bg-main">
+    <section id="portfolio" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.012]"
+        style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '60px 60px' }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <Reveal className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-text-primary mb-4">
-            A Closer Look at What We&apos;ve Built
+        <Reveal className="mb-20">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">Our work</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-surface-50 leading-tight max-w-2xl">
+            A closer look at what we&apos;ve built
           </h2>
-          <p className="text-lg sm:text-xl text-text-secondary font-body">
-            Strategy → Design → Build → Launch
-          </p>
+          <p className="mt-4 text-surface-400 text-lg">Strategy → Design → Build → Launch</p>
         </Reveal>
 
-        {/* Portfolio Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{
-                y: -8,
-                rotateX: 2,
-                rotateY: 2,
-                transition: { type: 'spring', stiffness: 300, damping: 20 },
-              }}
-              className="bg-gradient-to-br from-bg-dark to-bg-main rounded-xl overflow-hidden shadow-xl hover:shadow-accent-primary/20 transition-all duration-300"
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4, transition: { duration: 0.3 } }}
+              className="glass rounded-2xl overflow-hidden group cursor-default flex flex-col"
             >
-              {/* Client Image */}
-              {item.image && (
-                <div className="relative h-48 bg-gradient-to-br from-accent-primary/10 to-accent-secondary/10 flex items-center justify-center p-6">
+              {/* Client logo or gradient header */}
+              <div className={`relative h-40 bg-gradient-to-b ${item.accentColor} flex items-center justify-center p-8`}>
+                {item.image ? (
                   <Image
                     src={item.image}
                     alt={item.name}
-                    width={200}
-                    height={120}
-                    className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+                    width={180}
+                    height={90}
+                    className="object-contain max-h-24 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="text-center">
+                    <p className={`text-4xl font-heading font-black ${item.metricColor} leading-none`}>{item.metric}</p>
+                    <p className="text-xs text-surface-500 mt-1 uppercase tracking-wider">{item.metricLabel}</p>
+                  </div>
+                )}
+              </div>
 
-              {/* Card Body */}
-              <div className="p-5 lg:p-6">
-                <p className="text-xs uppercase tracking-wider text-accent-success font-semibold mb-1.5">
+              {/* Body */}
+              <div className="p-6 flex flex-col flex-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-surface-500 mb-1">
                   {item.label}
                 </p>
-                <h3 className="text-xl font-heading font-bold text-text-primary mb-2">
+                <h3 className="text-lg font-heading font-bold text-surface-50 mb-3">
                   {item.name}
                 </h3>
-                {item.subtitle && (
-                  <p className="text-xs text-text-secondary/70 font-body mb-3">
-                    {item.subtitle}
-                  </p>
-                )}
-                {item.tagline && (
-                  <p className="text-xs font-medium text-accent-primary/90 font-body mb-4 leading-relaxed italic">
-                    {item.tagline}
-                  </p>
-                )}
-                <p className="text-sm text-text-secondary font-body mb-4 leading-relaxed">
+                <p className="text-sm text-surface-400 leading-relaxed mb-5 flex-1">
                   {item.description}
                 </p>
 
                 {/* Impact */}
-                <div className="mb-4">
-                  <h4 className="text-xs font-heading font-semibold text-accent-secondary mb-1">
-                    Impact
-                  </h4>
-                  <p className="text-xs text-text-secondary/90 font-body leading-relaxed">
-                    {item.impact}
-                  </p>
+                <div className="mb-4 p-3 rounded-xl bg-surface-800/60 border border-surface-700/50">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-surface-500 mb-1">Impact</p>
+                  <p className="text-xs text-surface-300 leading-relaxed">{item.impact}</p>
                 </div>
 
-                {/* Features List */}
-                <div className="mb-4">
-                  <h4 className="text-xs font-heading font-semibold text-accent-primary mb-2">
-                    Key Features
-                  </h4>
-                  <ul className="space-y-1">
-                    {item.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="text-xs text-text-secondary font-body flex items-start gap-2"
-                      >
-                        <span className="text-accent-success mt-0.5 text-[10px]">
-                          •
-                        </span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Features */}
+                <ul className="space-y-1 mb-5">
+                  {item.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2 text-xs text-surface-400">
+                      <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-                {/* Tech Stack */}
+                {/* Tech stack */}
                 <div className="flex flex-wrap gap-1.5">
                   {item.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 text-[10px] font-medium bg-white/10 text-text-secondary rounded-full border border-white/20"
+                      className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-surface-800 text-surface-500 border border-surface-700"
                     >
                       {tech}
                     </span>

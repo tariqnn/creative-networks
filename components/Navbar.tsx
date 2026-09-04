@@ -20,15 +20,11 @@ export default function Navbar() {
   ]
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
-    }
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close language menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement
@@ -36,28 +32,18 @@ export default function Navbar() {
         setIsLangMenuOpen(false)
       }
     }
-
-    if (isLangMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    if (isLangMenuOpen) document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [isLangMenuOpen])
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     const element = document.querySelector(href)
     if (element) {
-      const offset = 80 // Account for fixed navbar height
+      const offset = 80
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
     }
     setIsMenuOpen(false)
   }
@@ -65,46 +51,30 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ y: -12 }}
+        animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
+        className={`fixed top-4 left-4 right-4 z-[9999] rounded-2xl transition-all duration-500 ${
           isScrolled
-            ? 'bg-black/40 backdrop-blur-2xl border-b border-white/10 shadow-[0_2px_18px_rgba(0,0,0,0.45)]'
-            : 'bg-transparent backdrop-blur-xl border-b border-white/10'
+            ? 'bg-surface-950/90 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+            : 'bg-surface-950/60 backdrop-blur-md border border-white/[0.05]'
         }`}
       >
-        {/* Glossy gradient overlay on scroll */}
-        {isScrolled && (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, transparent, rgba(2, 6, 23, 0.65))',
-            }}
-          />
-        )}
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[70px] md:h-[70px] sm:h-[60px]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div
-              whileHover={{ opacity: 0.8 }}
-              transition={{ duration: 0.2 }}
-              className="flex-shrink-0"
-            >
-              <div className="h-[72px] md:h-[72px] sm:h-[82px] flex items-center">
-                <Image
-                  src="/logo/no-background.png"
-                  alt="Creative Networks"
-                  width={284}
-                  height={73}
-                  className="h-[72px] md:h-[72px] sm:h-[82px] w-auto"
-                />
-              </div>
+            <motion.div whileHover={{ opacity: 0.8 }} transition={{ duration: 0.2 }} className="flex-shrink-0">
+              <Image
+                src="/logo/no-background.png"
+                alt="Creative Networks"
+                width={160}
+                height={40}
+                className="h-10 w-auto"
+              />
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -112,73 +82,45 @@ export default function Navbar() {
                   onClick={(e) => handleSmoothScroll(e, link.href)}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.3 }}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="relative text-sm font-medium uppercase tracking-wide text-white/80 hover:text-white transition-all duration-300 group cursor-pointer"
+                  transition={{ delay: index * 0.08, duration: 0.3 }}
+                  className="relative px-4 py-2 text-sm font-medium text-surface-200 hover:text-white transition-colors duration-200 cursor-pointer rounded-lg hover:bg-white/[0.06]"
                 >
-                  <span className="relative z-10">{link.name}</span>
-                  {/* Underline animation */}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent-primary transform scale-x-0 opacity-70 group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-300 origin-center" />
-                  {/* Glow effect on hover */}
-                  <span className="absolute inset-0 text-accent-primary opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-300 pointer-events-none">
-                    {link.name}
-                  </span>
+                  {link.name}
                 </motion.a>
               ))}
             </div>
 
             {/* Desktop CTA & Language */}
-            <div className="hidden md:flex items-center space-x-4">
-              <motion.a
-                href="#contact"
-                onClick={(e) => handleSmoothScroll(e, '#contact')}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-2 rounded-full border border-accent-primary text-accent-primary hover:shadow-[0_0_20px_rgba(0,168,232,0.5)] transition-all duration-300 text-sm font-medium cursor-pointer"
-              >
-                {t('nav.getInTouch')}
-              </motion.a>
+            <div className="hidden md:flex items-center gap-3">
               <div className="relative language-selector">
-                <button 
+                <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="px-4 py-2 rounded-full bg-white/5 border border-white/20 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200 text-sm font-medium flex items-center gap-1 cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg text-surface-200 hover:text-white hover:bg-white/[0.06] transition-all duration-200 text-sm font-medium flex items-center gap-1 cursor-pointer"
                 >
-                  {language === 'en' ? 'EN' : 'AR'} <span className="text-xs">▾</span>
+                  {language === 'en' ? 'EN' : 'AR'}
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                
-                {/* Language Dropdown */}
                 <AnimatePresence>
                   {isLangMenuOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full right-0 mt-2 w-32 bg-black/90 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden shadow-2xl z-50"
+                      initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full right-0 mt-2 w-32 glass-strong rounded-xl overflow-hidden shadow-2xl z-50"
                     >
                       <button
-                        onClick={() => {
-                          setLanguage('en')
-                          setIsLangMenuOpen(false)
-                        }}
-                        className={`w-full px-4 py-2 text-left text-sm transition-colors duration-200 ${
-                          language === 'en'
-                            ? 'bg-white/10 text-white'
-                            : 'text-white/70 hover:bg-white/5 hover:text-white'
+                        onClick={() => { setLanguage('en'); setIsLangMenuOpen(false) }}
+                        className={`w-full px-4 py-2.5 text-left text-sm transition-colors duration-200 cursor-pointer ${
+                          language === 'en' ? 'bg-accent/10 text-accent-light' : 'text-surface-400 hover:bg-white/[0.04] hover:text-surface-50'
                         }`}
                       >
                         English
                       </button>
                       <button
-                        onClick={() => {
-                          setLanguage('ar')
-                          setIsLangMenuOpen(false)
-                        }}
-                        className={`w-full px-4 py-2 text-left text-sm transition-colors duration-200 ${
-                          language === 'ar'
-                            ? 'bg-white/10 text-white'
-                            : 'text-white/70 hover:bg-white/5 hover:text-white'
+                        onClick={() => { setLanguage('ar'); setIsLangMenuOpen(false) }}
+                        className={`w-full px-4 py-2.5 text-left text-sm transition-colors duration-200 cursor-pointer ${
+                          language === 'ar' ? 'bg-accent/10 text-accent-light' : 'text-surface-400 hover:bg-white/[0.04] hover:text-surface-50'
                         }`}
                       >
                         العربية
@@ -187,26 +129,35 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+              <motion.a
+                href="#contact"
+                onClick={(e) => handleSmoothScroll(e, '#contact')}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-5 py-2 rounded-full bg-accent text-white text-sm font-semibold hover:bg-accent-dark transition-colors duration-200 cursor-pointer"
+              >
+                {t('nav.getInTouch')}
+              </motion.a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white p-2 relative z-[10000]"
+              className="md:hidden text-surface-50 p-2 relative z-[10000] cursor-pointer"
               aria-label="Toggle menu"
             >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
+              <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
-                  animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-6 bg-white transition-all duration-300"
+                  animate={isMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+                  className="block h-0.5 w-6 bg-surface-50 rounded-full origin-center"
                 />
                 <motion.span
-                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className="block h-0.5 w-6 bg-white transition-all duration-300"
+                  animate={isMenuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                  className="block h-0.5 w-6 bg-surface-50 rounded-full"
                 />
                 <motion.span
-                  animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-6 bg-white transition-all duration-300"
+                  animate={isMenuOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
+                  className="block h-0.5 w-6 bg-surface-50 rounded-full origin-center"
                 />
               </div>
             </button>
@@ -214,7 +165,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -223,81 +174,68 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-gradient-to-b from-bg-main to-[#15002A] z-[9998] md:hidden"
+              className="fixed inset-0 bg-surface-950/95 backdrop-blur-2xl z-[9998] md:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="fixed inset-0 z-[9999] md:hidden flex flex-col items-center justify-center px-6 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[9999] md:hidden flex flex-col items-center justify-center px-6"
             >
-                        <div className="w-full max-w-md space-y-8">
-                          {navLinks.map((link, index) => (
-                            <motion.a
-                              key={link.name}
-                              href={link.href}
-                              onClick={(e) => handleSmoothScroll(e, link.href)}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -20 }}
-                              transition={{ delay: index * 0.1, duration: 0.3 }}
-                              className="block text-3xl font-heading font-bold text-white/90 hover:text-white transition-colors duration-200 text-center cursor-pointer"
-                            >
-                              {link.name}
-                            </motion.a>
-                          ))}
-                        </div>
-
-              {/* Mobile Footer Actions */}
+              <div className="w-full max-w-sm space-y-2">
+                {navLinks.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: index * 0.06, duration: 0.3 }}
+                    className="block text-4xl font-heading font-bold text-surface-50 hover:text-accent-light transition-colors duration-200 py-3 cursor-pointer"
+                  >
+                    {link.name}
+                  </motion.a>
+                ))}
+              </div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.5, duration: 0.3 }}
-                className="absolute bottom-12 w-full max-w-md px-6 space-y-4 pointer-events-auto"
+                transition={{ delay: 0.4, duration: 0.3 }}
+                className="absolute bottom-12 w-full max-w-sm px-6 space-y-3"
               >
                 <div className="relative w-full language-selector">
-                  <button 
+                  <button
                     onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                    className="w-full px-6 py-3 rounded-full border border-white/20 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200 text-base font-medium flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full px-6 py-3 rounded-xl glass text-surface-400 hover:text-surface-50 transition-all duration-200 text-base font-medium flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    {language === 'en' ? 'EN' : 'AR'} <span className="text-xs">▾</span>
+                    {language === 'en' ? 'English' : 'العربية'}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  
-                  {/* Mobile Language Dropdown */}
                   <AnimatePresence>
                     {isLangMenuOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 right-0 mt-2 w-full bg-black/90 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden shadow-2xl z-50"
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute bottom-full left-0 right-0 mb-2 glass-strong rounded-xl overflow-hidden shadow-2xl z-50"
                       >
                         <button
-                          onClick={() => {
-                            setLanguage('en')
-                            setIsLangMenuOpen(false)
-                          }}
-                          className={`w-full px-4 py-3 text-left text-base transition-colors duration-200 ${
-                            language === 'en'
-                              ? 'bg-white/10 text-white'
-                              : 'text-white/70 hover:bg-white/5 hover:text-white'
+                          onClick={() => { setLanguage('en'); setIsLangMenuOpen(false) }}
+                          className={`w-full px-4 py-3 text-left text-base transition-colors duration-200 cursor-pointer ${
+                            language === 'en' ? 'bg-accent/10 text-accent-light' : 'text-surface-400 hover:bg-white/[0.04]'
                           }`}
                         >
                           English
                         </button>
                         <button
-                          onClick={() => {
-                            setLanguage('ar')
-                            setIsLangMenuOpen(false)
-                          }}
-                          className={`w-full px-4 py-3 text-left text-base transition-colors duration-200 ${
-                            language === 'ar'
-                              ? 'bg-white/10 text-white'
-                              : 'text-white/70 hover:bg-white/5 hover:text-white'
+                          onClick={() => { setLanguage('ar'); setIsLangMenuOpen(false) }}
+                          className={`w-full px-4 py-3 text-left text-base transition-colors duration-200 cursor-pointer ${
+                            language === 'ar' ? 'bg-accent/10 text-accent-light' : 'text-surface-400 hover:bg-white/[0.04]'
                           }`}
                         >
                           العربية
@@ -309,9 +247,7 @@ export default function Navbar() {
                 <motion.a
                   href="#contact"
                   onClick={(e) => handleSmoothScroll(e, '#contact')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="block w-full px-6 py-3 rounded-full border border-accent-primary text-accent-primary hover:shadow-[0_0_20px_rgba(0,168,232,0.5)] transition-all duration-300 text-base font-medium text-center cursor-pointer"
+                  className="block w-full px-6 py-3 rounded-full bg-accent text-white text-base font-semibold text-center cursor-pointer hover:bg-accent-dark transition-colors duration-200"
                 >
                   {t('nav.getInTouch')}
                 </motion.a>

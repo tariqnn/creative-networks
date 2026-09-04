@@ -9,79 +9,81 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'bg-main': '#020617',
-        'bg-dark': '#0B0330',
-        'bg-light': '#F7F7FB',
-        'accent-primary': '#00A8E8',
-        'accent-secondary': '#9D00FF',
-        'accent-success': '#0AFF9D',
-        'accent-testimonial': '#36D44A',
-        'text-primary': '#FFFFFF',
-        'text-secondary': '#C7CEDA',
-        'text-dark': '#020617',
-        'gradient-purple': '#1E1B4B',
-        'gradient-dark': '#0F172A',
+        surface: {
+          DEFAULT: '#09090B',
+          50: '#FAFAFA',
+          100: '#F4F4F5',
+          200: '#E4E4E7',
+          300: '#D4D4D8',
+          400: '#A1A1AA',
+          500: '#71717A',
+          600: '#52525B',
+          700: '#3F3F46',
+          800: '#27272A',
+          900: '#18181B',
+          950: '#09090B',
+        },
+        accent: {
+          DEFAULT: '#6366F1',
+          light: '#818CF8',
+          dark: '#4F46E5',
+        },
+        cyan: {
+          DEFAULT: '#06B6D4',
+          light: '#22D3EE',
+          dark: '#0891B2',
+        },
+        emerald: {
+          DEFAULT: '#10B981',
+          light: '#34D399',
+          dark: '#059669',
+        },
       },
       fontFamily: {
-        'heading': ['var(--font-space-grotesk)', 'sans-serif'],
-        'body': ['var(--font-inter)', 'sans-serif'],
+        heading: ['var(--font-outfit)', 'sans-serif'],
+        body: ['var(--font-rubik)', 'sans-serif'],
       },
       animation: {
-        'gradient': 'gradient 15s ease infinite',
-        'scroll': 'scroll 30s linear infinite',
-        'hero-gradient': 'hero-gradient 18s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'shimmer': 'shimmer 3s ease-in-out infinite',
+        'gradient': 'gradient 20s ease infinite',
+        'scroll': 'scroll 25s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 4s ease-in-out infinite',
+        'slide-up': 'slideUp 0.6s ease-out',
+        'spotlight': 'spotlight 2s ease 0.75s 1 forwards',
+        'spin': 'spin 1s linear infinite',
       },
       keyframes: {
         gradient: {
-          '0%, 100%': {
-            'background-position': '0% 50%',
-          },
-          '50%': {
-            'background-position': '100% 50%',
-          },
+          '0%, 100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
         },
         scroll: {
-          '0%': {
-            transform: 'translateX(0)',
-          },
-          '100%': {
-            transform: 'translateX(-50%)',
-          },
-        },
-        'hero-gradient': {
-          '0%, 100%': {
-            transform: 'translate3d(0,0,0) scale(1)',
-          },
-          '50%': {
-            transform: 'translate3d(-10px, 10px, 0) scale(1.05)',
-          },
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
         float: {
-          '0%, 100%': {
-            transform: 'translateY(-2px)',
-          },
-          '50%': {
-            transform: 'translateY(2px)',
-          },
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
         },
-        shimmer: {
-          '0%': {
-            'background-position': '-200% 0',
-          },
-          '100%': {
-            'background-position': '200% 0',
-          },
+        glow: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
         },
-      },
-      transitionDelay: {
-        '1000': '1000ms',
-        '2000': '2000ms',
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        spotlight: {
+          '0%': { opacity: '0', transform: 'translate(-72%, -62%) scale(0.5)' },
+          '100%': { opacity: '1', transform: 'translate(-50%, -40%) scale(1)' },
+        },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
     },
   },
   plugins: [],
 }
 export default config
-

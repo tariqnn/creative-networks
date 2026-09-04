@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Services() {
   const { t } = useLanguage()
-  
+
   const services = [
     {
       category: t('services.websiteDesign'),
@@ -15,7 +15,8 @@ export default function Services() {
       description: t('services.websiteDesc'),
       tech: ['React', 'Next.js', 'Node.js', 'WordPress', 'TypeScript'],
       image: '/services/website.jpg',
-      categorySize: 'text-[12px]',
+      accent: 'from-accent/20 to-cyan/10',
+      badge: 'bg-accent/10 text-accent-light border-accent/20',
     },
     {
       category: t('services.mobileCategory'),
@@ -23,7 +24,8 @@ export default function Services() {
       description: t('services.mobileDesc'),
       tech: ['Flutter', 'React Native', 'Kotlin', 'Swift'],
       image: '/services/mobile.png',
-      categorySize: 'text-[12px]',
+      accent: 'from-cyan/20 to-accent/10',
+      badge: 'bg-cyan/10 text-cyan border-cyan/20',
     },
     {
       category: t('services.saasCategory'),
@@ -31,29 +33,28 @@ export default function Services() {
       description: t('services.saasDesc'),
       tech: ['Node.js', 'NestJS', 'PostgreSQL', 'AWS'],
       image: '/services/erp.png',
-      categorySize: 'text-[12px]',
+      accent: 'from-emerald/20 to-accent/10',
+      badge: 'bg-emerald/10 text-emerald border-emerald/20',
     },
   ]
+
   return (
-    <section id="services" className="py-24 sm:py-32 bg-bg-light">
+    <section id="services" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
+      {/* Subtle grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
+        style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '60px 60px' }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <Reveal className="text-center mb-16">
-          {/* Label */}
-          <div className="inline-flex flex-col items-center mb-6">
-            <p className="text-lg md:text-xl lg:text-2xl font-bold tracking-[0.35em] bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent uppercase mb-2">
-              {t('services.whatWeDo')}
-            </p>
-            <div className="h-px w-full bg-accent-primary" />
-          </div>
-
-          {/* Main Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-text-dark mb-4 leading-tight">
+        <Reveal className="mb-20">
+          <p className="text-sm font-semibold tracking-[0.3em] text-accent uppercase mb-4">
+            {t('services.whatWeDo')}
+          </p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-surface-50 leading-tight max-w-2xl">
             {t('services.title')}
           </h2>
-
-          {/* Subtitle */}
-          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-surface-400 max-w-xl leading-relaxed">
             {t('services.subtitle')}
           </p>
         </Reveal>
@@ -62,86 +63,57 @@ export default function Services() {
         <motion.div
           variants={{
             hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: { staggerChildren: 0.12 },
-            },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } },
           }}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={{
-                hidden: { opacity: 0, y: 28 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+                hidden: { opacity: 0, y: 24 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
               }}
-              whileHover={{ 
-                y: -6, 
-                scale: 1.01, 
-                boxShadow: '0 24px 60px rgba(15,23,42,0.18)',
-                transition: { type: 'spring', stiffness: 260, damping: 20 }
-              }}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl hover:border-accent-primary/10 border border-transparent transition-all duration-300 group"
+              whileHover={{ y: -4, transition: { duration: 0.3, ease: 'easeOut' } }}
+              className="glass rounded-2xl overflow-hidden group cursor-default"
             >
-              {/* Image Container */}
-              <div className="relative h-72 w-full overflow-hidden rounded-t-3xl bg-gradient-to-br from-slate-200 to-slate-300">
-                {/* Background gradient placeholder - matches service type (fallback) */}
-                <div
-                  className={`absolute inset-0 z-0 ${
-                    index === 0
-                      ? 'bg-gradient-to-br from-accent-primary/30 via-accent-secondary/20 to-slate-900/40'
-                      : index === 1
-                        ? 'bg-gradient-to-br from-accent-primary/25 via-accent-secondary/25 to-purple-500/30'
-                        : 'bg-gradient-to-br from-slate-700/40 via-accent-primary/20 to-slate-900/50'
-                  }`}
-                />
-                
-                {/* Image with parallax effect */}
-                <motion.div 
-                  className="absolute inset-0 z-10"
-                  whileHover={{ y: -8 }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+              {/* Image */}
+              <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${service.accent}`}>
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
                 >
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover opacity-80"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </motion.div>
-                
-                {/* Overlay gradient */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/20 via-slate-900/0 group-hover:from-slate-950/10 transition-all duration-300 z-20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-950/60 via-transparent to-transparent" />
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 lg:p-8">
-                {/* Category Label */}
-                <p className={`${service.categorySize || 'text-[11px]'} font-semibold tracking-[0.2em] text-accent-primary uppercase mb-2`}>
+              {/* Body */}
+              <div className="p-7">
+                <span className={`inline-block text-[10px] font-bold tracking-[0.25em] uppercase px-3 py-1 rounded-full border ${service.badge} mb-4`}>
                   {service.category}
-                </p>
-
-                {/* Title */}
-                <h3 className="text-lg md:text-xl font-semibold text-text-dark mb-3 leading-tight">
+                </span>
+                <h3 className="text-xl font-heading font-bold text-surface-50 mb-3 leading-tight">
                   {service.title}
                 </h3>
-
-                {/* Description */}
-                <p className="text-slate-600 text-sm md:text-[15px] leading-relaxed mb-6">
+                <p className="text-surface-400 text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
-
-                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {service.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-600 hover:border-accent-primary/30 hover:text-accent-primary transition-colors duration-200"
+                      className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-surface-800 text-surface-400 border border-surface-700"
                     >
                       {tech}
                     </span>

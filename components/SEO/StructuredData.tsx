@@ -24,7 +24,7 @@ export default function StructuredData() {
         '@type': 'ContactPoint',
         telephone: '+962795550073',
         contactType: 'Customer Service',
-        email: 'info@creativenetworkservices.com',
+        email: 'info@creativnetworks.com',
         areaServed: ['JO', 'MENA', 'Worldwide'],
         availableLanguage: ['English', 'Arabic'],
       },
@@ -49,7 +49,7 @@ export default function StructuredData() {
       image: 'https://creativenetworkservices.com/logo/no-background.png',
       url: 'https://creativenetworkservices.com',
       telephone: '+962795550073',
-      email: 'info@creativenetworkservices.com',
+      email: 'info@creativnetworks.com',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Amman',

@@ -1,50 +1,49 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Reveal from '@/components/animations/Reveal'
 
-// Client logos
 const clients = [
-  { name: 'Client 1', logo: '/clients/client-1.png' },
-  { name: 'Client 2', logo: '/clients/client-2.png' },
-  { name: 'Client 3', logo: '/clients/client 3.jpeg' },
+  { name: 'SD13', logo: '/clients/client-1.png' },
+  { name: 'Sahati Link', logo: '/clients/client-2.png' },
+  { name: 'Infinity Sport', logo: '/clients/client 3.jpeg' },
 ]
 
-// Duplicate clients for seamless loop
-const duplicatedClients = [...clients, ...clients]
+const duplicatedClients = [...clients, ...clients, ...clients, ...clients]
 
 export default function ClientsBar() {
   return (
-    <section className="py-16 sm:py-20 bg-white border-y border-gray-200">
+    <section className="py-20 bg-surface-900 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="text-center mb-8">
-          <p className="text-sm uppercase tracking-wider text-gray-500 font-semibold">
-            Trusted by Industry Leaders
+        <Reveal className="text-center mb-12">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-surface-600">
+            Trusted by industry leaders
           </p>
         </Reveal>
 
-        {/* Scrolling Logos */}
+        {/* Scrolling strip with fade edges */}
         <div className="relative overflow-hidden">
-          <div 
-            className="flex gap-12 items-center animate-scroll"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.animationPlayState = 'paused'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.animationPlayState = 'running'
-            }}
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-surface-900 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-surface-900 to-transparent pointer-events-none" />
+
+          <div
+            className="flex gap-16 items-center animate-scroll"
+            onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = 'paused' }}
+            onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = 'running' }}
           >
             {duplicatedClients.map((client, index) => (
               <div
                 key={`${client.name}-${index}`}
-                className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+                className="flex-shrink-0 w-28 h-14 md:w-36 md:h-16 flex items-center justify-center grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-500 cursor-default"
               >
                 <Image
                   src={client.logo}
                   alt={client.name}
-                  width={160}
-                  height={80}
+                  width={144}
+                  height={64}
                   className="object-contain w-full h-full"
                 />
               </div>
@@ -52,8 +51,6 @@ export default function ClientsBar() {
           </div>
         </div>
       </div>
-
     </section>
   )
 }
-

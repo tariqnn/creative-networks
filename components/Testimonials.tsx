@@ -5,25 +5,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const testimonials = [
   {
-    quote:
-      'Creative Networks transformed our digital presence. Their attention to detail and commitment to excellence is unmatched. The team delivered beyond our expectations.',
+    quote: 'Creative Networks transformed our digital presence. Their attention to detail and commitment to excellence is unmatched. The team delivered beyond our expectations.',
     name: 'Murad Q.',
     role: 'COO – Casio Jordan',
-    image: '/api/placeholder/80/80',
+    initials: 'MQ',
   },
   {
-    quote:
-      'Working with Creative Networks has been a game-changer. They understood our vision and brought it to life with innovative solutions and flawless execution.',
+    quote: 'Working with Creative Networks has been a game-changer. They understood our vision and brought it to life with innovative solutions and flawless execution.',
     name: 'Sarah Al-Mansouri',
     role: 'CEO – TechVentures',
-    image: '/api/placeholder/80/80',
+    initials: 'SM',
   },
   {
-    quote:
-      'The professionalism and technical expertise of Creative Networks is outstanding. They delivered a complex system on time and within budget.',
+    quote: 'The professionalism and technical expertise of Creative Networks is outstanding. They delivered a complex system on time and within budget.',
     name: 'Ahmed Hassan',
     role: 'CTO – Digital Solutions',
-    image: '/api/placeholder/80/80',
+    initials: 'AH',
   },
 ]
 
@@ -41,165 +38,101 @@ export default function Testimonials() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
-  const goToTestimonial = (index: number) => {
-    setCurrentIndex(index)
-  }
-
   return (
-    <section className="py-24 sm:py-32 bg-bg-main relative overflow-hidden">
-      {/* Background gradient matching hero */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-purple/20 rounded-full blur-3xl animate-pulse" />
-        <div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-primary/15 rounded-full blur-3xl animate-pulse" 
-          style={{ animationDelay: '1s' }}
-        />
-        <div 
-          className="absolute top-1/2 right-1/3 w-72 h-72 bg-accent-secondary/15 rounded-full blur-3xl animate-pulse" 
-          style={{ animationDelay: '2s' }}
-        />
+    <section className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent/[0.04] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-4">
-          {/* Left Arrow */}
-          <motion.button
-            onClick={prevTestimonial}
-            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.16)' }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white transition-all duration-200"
-            aria-label="Previous testimonial"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Label */}
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3">What clients say</p>
+          <h2 className="text-4xl sm:text-5xl font-heading font-bold text-surface-50">
+            Trusted by builders
+          </h2>
+        </div>
+
+        {/* Card */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: direction === 'next' ? 60 : -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction === 'next' ? -60 : 60 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="glass rounded-3xl p-10 sm:p-14"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </motion.button>
+              {/* Quote mark */}
+              <svg className="w-10 h-10 text-accent/30 mb-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
 
-          {/* Testimonial Card */}
-          <div className="flex-1 max-w-2xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: direction === 'next' ? 40 : -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction === 'next' ? -40 : 40 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="bg-white rounded-2xl shadow-2xl p-8 sm:p-12"
-              >
-                <p className="text-lg sm:text-xl text-text-dark font-body leading-relaxed mb-8">
-                  "{testimonials[currentIndex].quote}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-200 flex-shrink-0" />
-                  <div>
-                    <p className="font-heading font-bold text-text-dark">
-                      {testimonials[currentIndex].name}
-                    </p>
-                    <p className="text-text-dark/70 font-body text-sm">
-                      {testimonials[currentIndex].role}
-                    </p>
-                  </div>
+              <p className="text-xl sm:text-2xl text-surface-200 font-body leading-relaxed mb-10 font-light">
+                &ldquo;{testimonials[currentIndex].quote}&rdquo;
+              </p>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-cyan flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0">
+                  {testimonials[currentIndex].initials}
                 </div>
-              </motion.div>
-            </AnimatePresence>
+                <div>
+                  <p className="font-heading font-semibold text-surface-50">
+                    {testimonials[currentIndex].name}
+                  </p>
+                  <p className="text-surface-500 text-sm">
+                    {testimonials[currentIndex].role}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-            {/* Dots Pagination */}
-            <div className="flex justify-center gap-2 mt-8">
+          {/* Controls */}
+          <div className="flex items-center justify-between mt-8">
+            {/* Dots */}
+            <div className="flex gap-2">
               {testimonials.map((_, index) => (
-                <motion.button
+                <button
                   key={index}
-                  onClick={() => {
-                    setDirection(index > currentIndex ? 'next' : 'prev')
-                    goToTestimonial(index)
-                  }}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`h-2 rounded-full transition-all duration-200 ${
-                    index === currentIndex
-                      ? 'bg-white w-8'
-                      : 'bg-white/40 hover:bg-white/60 w-2'
+                  onClick={() => { setDirection(index > currentIndex ? 'next' : 'prev'); setCurrentIndex(index) }}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === currentIndex ? 'w-8 bg-accent' : 'w-2 bg-surface-700 hover:bg-surface-500'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
-                  animate={{
-                    scale: index === currentIndex ? 1.1 : 1,
-                    opacity: index === currentIndex ? 1 : 0.4,
-                  }}
                 />
               ))}
             </div>
+
+            {/* Arrows */}
+            <div className="flex gap-3">
+              <motion.button
+                onClick={prevTestimonial}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 rounded-full glass flex items-center justify-center text-surface-400 hover:text-surface-50 transition-colors duration-200 cursor-pointer"
+                aria-label="Previous"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </motion.button>
+              <motion.button
+                onClick={nextTestimonial}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 rounded-full glass flex items-center justify-center text-surface-400 hover:text-surface-50 transition-colors duration-200 cursor-pointer"
+                aria-label="Next"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.button>
+            </div>
           </div>
-
-          {/* Right Arrow */}
-          <motion.button
-            onClick={nextTestimonial}
-            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.16)' }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white transition-all duration-200"
-            aria-label="Next testimonial"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </motion.button>
-        </div>
-
-        {/* Mobile Arrows */}
-        <div className="sm:hidden flex justify-center gap-4 mt-6">
-          <motion.button
-            onClick={prevTestimonial}
-            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.16)' }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white transition-all duration-200"
-            aria-label="Previous testimonial"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </motion.button>
-          <motion.button
-            onClick={nextTestimonial}
-            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.16)' }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white transition-all duration-200"
-            aria-label="Next testimonial"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </motion.button>
         </div>
       </div>
     </section>
   )
 }
-
