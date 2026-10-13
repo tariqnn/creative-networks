@@ -63,7 +63,7 @@
   }
 
   .brand-scene canvas {
-    filter: grayscale(0.72) saturate(0.72) contrast(1.02);
+    filter: brightness(1.38) grayscale(0.32) saturate(0.62) contrast(0.94);
   }
 }
 

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { SplineScene } from '@/components/ui/splite'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -66,12 +66,15 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="min-h-[300px] md:min-h-0 p-8 sm:p-12 flex items-center justify-center bg-surface-950 border-t md:border-t-0 md:border-l border-accent/10">
-              <div className="w-full max-w-md aspect-[1.45] rounded-2xl bg-white border border-accent/10 shadow-sm flex flex-col items-center justify-center p-8 text-center">
-                <Image src="/logo/creative-networks.png" alt="Creative Networks" width={217} height={73} className="w-56 h-auto" priority />
-                <span className="mt-7 h-px w-16 bg-cyan" />
-                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-surface-300">Built in Amman</p>
-                <p className="mt-1 text-sm text-surface-300">Working across the MENA region</p>
+            <div className="relative min-h-[340px] md:min-h-0 overflow-hidden bg-[#e6edf2] border-t md:border-t-0 md:border-l border-accent/10">
+              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(145deg,rgba(255,255,255,0.72),rgba(215,224,231,0.24)_55%,rgba(18,58,91,0.05))]" />
+              <SplineScene
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="brand-scene relative z-[1] h-[340px] w-full md:h-full md:min-h-[500px]"
+              />
+              <div className="absolute bottom-5 left-5 z-[2] rounded-xl border border-white/80 bg-white/85 px-4 py-2 shadow-sm backdrop-blur-sm">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Built in Amman</p>
+                <p className="mt-0.5 text-xs text-surface-300">Made for the MENA region</p>
               </div>
             </div>
           </div>

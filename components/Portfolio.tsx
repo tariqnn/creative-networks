@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Reveal from '@/components/animations/Reveal'
@@ -12,7 +13,7 @@ const portfolioItems = [
     impact: 'A connected digital experience for discovering and taking part in local sports.',
     features: ['Discover football, basketball, dodgeball, and tennis', 'Find games and book a place', 'Explore venues and sports academies', 'Tournaments, leaderboards, and community'],
     tech: ['Next.js', 'PostgreSQL', 'Flutter', 'Firebase'],
-    image: undefined,
+    image: '/projects/playup.svg',
     accentColor: 'from-accent/10 to-transparent',
     metricColor: 'text-accent',
     metric: 'Website + App',
@@ -65,7 +66,7 @@ const portfolioItems = [
     impact: '40% faster load times, reduced cart abandonment, and zero overselling thanks to real-time data syncing.',
     features: ['Secure auth & role management', 'Live inventory syncing', 'Dynamic product catalog', 'Optimized checkout'],
     tech: ['Laravel', 'React', 'JavaScript', 'AWS', 'Firebase'],
-    image: undefined,
+    image: '/projects/nexora-market.svg',
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+40%',
@@ -78,7 +79,7 @@ const portfolioItems = [
     impact: 'Teams reduced reporting time by 70% and gained actionable insights instantly.',
     features: ['Real-time analytics', 'Content performance tracking', 'Multi-channel integration', 'Smooth transitions'],
     tech: ['React', 'TypeScript', 'Google Cloud'],
-    image: undefined,
+    image: '/projects/pulsemetrics.svg',
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '-70%',
@@ -91,7 +92,7 @@ const portfolioItems = [
     impact: 'Class bookings increased by 52% and user engagement dramatically improved.',
     features: ['Class booking & scheduling', 'Membership management', 'Personalized programs', 'Push notifications'],
     tech: ['Flutter', 'Firebase'],
-    image: undefined,
+    image: '/projects/flexmotion.svg',
     accentColor: 'from-emerald/20 to-transparent',
     metricColor: 'text-emerald',
     metric: '+52%',
@@ -104,7 +105,7 @@ const portfolioItems = [
     impact: 'Response times dropped to under 30 seconds and closures improved by 38%.',
     features: ['AI lead scoring', 'Smart email drafting', 'Advanced reporting', 'Role-based access'],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'OpenAI API'],
-    image: undefined,
+    image: '/projects/skyline-crm.svg',
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+38%',
@@ -117,7 +118,7 @@ const portfolioItems = [
     impact: 'Hosted over 4,000 students in the first month and reduced admin workload by 70%.',
     features: ['Video courses', 'Webcam-proctored exams', 'Certificates & achievements', 'AI study recommendations'],
     tech: ['MERN Stack', 'WebRTC'],
-    image: undefined,
+    image: '/projects/edunova.svg',
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '4,000+',
@@ -126,6 +127,8 @@ const portfolioItems = [
 ]
 
 export default function Portfolio() {
+  const [showAll, setShowAll] = useState(false)
+
   return (
     <section id="portfolio" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-[0.012]"
@@ -142,7 +145,7 @@ export default function Portfolio() {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {portfolioItems.map((item, index) => (
+          {portfolioItems.slice(0, showAll ? portfolioItems.length : 3).map((item, index) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: 32 }}
@@ -155,13 +158,17 @@ export default function Portfolio() {
               {/* Client logo or gradient header */}
               <div className={`relative h-40 bg-gradient-to-b ${item.accentColor} flex items-center justify-center p-8`}>
                 {item.image ? (
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={180}
-                    height={90}
-                    className="object-contain max-h-24 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
-                  />
+                  item.image.startsWith('/projects/') ? (
+                    <Image src={item.image} alt={`${item.name} project artwork`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={180}
+                      height={90}
+                      className="object-contain max-h-24 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
+                    />
+                  )
                 ) : (
                   <div className="text-center">
                     <p className={`text-4xl font-heading font-black ${item.metricColor} leading-none`}>{item.metric}</p>
@@ -213,6 +220,19 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </div>
+
+        {portfolioItems.length > 3 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((shown) => !shown)}
+              aria-expanded={showAll}
+              className="rounded-full border border-accent/20 bg-white px-7 py-3 text-sm font-semibold text-accent shadow-sm transition-colors hover:bg-accent hover:text-white"
+            >
+              {showAll ? 'Show fewer projects' : `See more projects (${portfolioItems.length - 3})`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" rx="28" fill="#E8EDF1"/><rect x="48" y="40" width="704" height="320" rx="22" fill="#FFF"/>
+  <path d="M48 107h704" stroke="#E3E9EE" stroke-width="2"/><circle cx="82" cy="74" r="15" fill="#123A5B"/><path d="M76 74h12m-6-6v12" stroke="#FFF" stroke-width="2"/>
+  <text x="111" y="80" fill="#123A5B" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="2">NEXORA</text><rect x="520" y="62" width="142" height="24" rx="12" fill="#F0F3F6"/><circle cx="692" cy="74" r="12" fill="#D4DEE5"/>
+  <text x="80" y="145" fill="#123A5B" font-family="Arial,sans-serif" font-size="16" font-weight="700">Curated for everyday</text><text x="80" y="165" fill="#718596" font-family="Arial,sans-serif" font-size="11">A considered collection, all in one place.</text>
+  <rect x="80" y="185" width="142" height="130" rx="14" fill="#E4EBF0"/><rect x="237" y="185" width="142" height="130" rx="14" fill="#EDF0EE"/><rect x="394" y="185" width="142" height="130" rx="14" fill="#EDE9E3"/><rect x="551" y="185" width="169" height="130" rx="14" fill="#E7EDF0"/>
+  <path d="M126 214h50l-8 54h-34l-8-54Zm10 0c0-13 5-20 15-20s15 7 15 20" stroke="#54728A" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m284 205 27 14 27-14 12 16-15 11v39h-48v-39l-15-11 12-16Z" fill="#D7DEE3" stroke="#8298A8" stroke-width="3"/>
+  <path d="M446 223h39v43h-39z" fill="#C8B99F"/><path d="M441 218h49v10h-49zm10 48v-21m29 21v-21" stroke="#8B7D6B" stroke-width="4"/>
+  <rect x="583" y="207" width="99" height="61" rx="9" fill="#FFF"/><path d="M601 223h63m-63 13h45m-45 13h54" stroke="#B5C2CC" stroke-width="5" stroke-linecap="round"/><text x="89" y="339" fill="#667E90" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">SHOP · DISCOVER · CHECK OUT</text>
+</svg>

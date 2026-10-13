@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" rx="28" fill="#E6EDF2"/>
+  <path d="M0 296c141-67 225-86 349-37 135 52 250 33 451-85v226H0V296Z" fill="#D4E0E8"/>
+  <path d="M0 329c145-66 244-74 370-35 121 38 243 8 430-93" stroke="#B8C9D5" stroke-width="2"/>
+  <rect x="67" y="54" width="424" height="286" rx="22" fill="#FFF"/>
+  <rect x="67" y="54" width="424" height="47" rx="22" fill="#123A5B"/>
+  <circle cx="94" cy="77" r="5" fill="#CED8DF"/><circle cx="111" cy="77" r="5" fill="#CED8DF"/><circle cx="128" cy="77" r="5" fill="#CED8DF"/>
+  <rect x="91" y="121" width="154" height="188" rx="14" fill="#EAF0F4"/>
+  <path d="M91 229c42-27 86-34 154-4v84H91v-80Z" fill="#B7C9D6"/>
+  <path d="M111 174h112M111 191h77" stroke="#8298A8" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="170" cy="246" r="34" fill="#FFF"/><path d="m170 217 22 16-8 27h-28l-8-27 22-16Z" stroke="#123A5B" stroke-width="4"/>
+  <text x="266" y="149" fill="#123A5B" font-family="Arial,sans-serif" font-size="18" font-weight="700">Find your next game</text>
+  <text x="266" y="174" fill="#718596" font-family="Arial,sans-serif" font-size="12">FOOTBALL · BASKETBALL · MORE</text>
+  <rect x="266" y="195" width="194" height="47" rx="11" fill="#F2F5F7"/><circle cx="285" cy="218" r="7" fill="#A5AAAF"/><path d="M302 213h122M302 224h82" stroke="#90A1AE" stroke-width="5" stroke-linecap="round"/>
+  <rect x="266" y="254" width="109" height="34" rx="17" fill="#123A5B"/><text x="291" y="276" fill="#FFF" font-family="Arial,sans-serif" font-size="12" font-weight="700">Explore games</text>
+  <circle cx="602" cy="215" r="87" fill="#123A5B"/><circle cx="602" cy="215" r="66" fill="#FFF"/><path d="m602 158 44 32-17 53h-54l-17-53 44-32Z" stroke="#123A5B" stroke-width="8"/><path d="m558 190 42 12m46-12-42 12m-27 41 17-41m36 41-17-41m-36 41h54" stroke="#123A5B" stroke-width="6"/>
+  <text x="526" y="333" fill="#123A5B" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="4">AMMAN PLAYS</text>
+</svg>
