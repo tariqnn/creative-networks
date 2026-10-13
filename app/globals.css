@@ -22,7 +22,7 @@
   }
 
   body {
-    @apply bg-surface-950 text-surface-50 font-body;
+    @apply bg-white text-surface-50 font-body;
   }
 
   .font-arabic {
@@ -34,32 +34,32 @@
   }
 
   ::selection {
-    @apply bg-accent/30 text-white;
+    @apply bg-accent/15 text-accent;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(to right, #6366F1, #06B6D4, #10B981);
+    background: linear-gradient(to right, #123A5B, #60798E, #A5AAAF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06];
+    @apply bg-slate-950/[0.025] backdrop-blur-xl border border-accent/[0.09];
   }
 
   .glass-strong {
-    @apply bg-white/[0.06] backdrop-blur-2xl border border-white/[0.08];
+    @apply bg-white/90 backdrop-blur-2xl border border-accent/[0.12];
   }
 
   .glow-accent {
-    box-shadow: 0 0 60px -12px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 60px -12px rgba(18, 58, 91, 0.16);
   }
 
   .glow-cyan {
-    box-shadow: 0 0 60px -12px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 60px -12px rgba(165, 170, 175, 0.2);
   }
 }
 

@@ -31,8 +31,8 @@ export default function TrustSection() {
   return (
     <section id="trust" className="py-28 sm:py-36 bg-surface-900 relative overflow-hidden">
       {/* Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-accent/[0.10] to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-accent/[0.10] to-transparent" />
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-accent/[0.04] rounded-full blur-[120px] -translate-y-1/2" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

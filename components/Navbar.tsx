@@ -56,8 +56,8 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-4 left-4 right-4 z-[9999] rounded-2xl transition-all duration-500 ${
           isScrolled
-            ? 'bg-surface-950/90 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-            : 'bg-surface-950/60 backdrop-blur-md border border-white/[0.05]'
+            ? 'bg-white/95 backdrop-blur-2xl border border-accent/[0.10] shadow-[0_8px_32px_rgba(18,58,91,0.10)]'
+            : 'bg-white/85 backdrop-blur-md border border-accent/[0.07]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -65,11 +65,11 @@ export default function Navbar() {
             {/* Logo */}
             <motion.div whileHover={{ opacity: 0.8 }} transition={{ duration: 0.2 }} className="flex-shrink-0">
               <Image
-                src="/logo/no-background.png"
+                src="/logo/creative-networks.png"
                 alt="Creative Networks"
-                width={160}
-                height={40}
-                className="h-10 w-auto"
+                width={217}
+                height={73}
+                className="h-12 w-auto sm:h-14"
               />
             </motion.div>
 
@@ -83,7 +83,7 @@ export default function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.08, duration: 0.3 }}
-                  className="relative px-4 py-2 text-sm font-medium text-surface-200 hover:text-white transition-colors duration-200 cursor-pointer rounded-lg hover:bg-white/[0.06]"
+                  className="relative px-4 py-2 text-sm font-medium text-surface-200 hover:text-accent transition-colors duration-200 cursor-pointer rounded-lg hover:bg-accent/[0.05]"
                 >
                   {link.name}
                 </motion.a>
@@ -95,7 +95,7 @@ export default function Navbar() {
               <div className="relative language-selector">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="px-3 py-1.5 rounded-lg text-surface-200 hover:text-white hover:bg-white/[0.06] transition-all duration-200 text-sm font-medium flex items-center gap-1 cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg text-surface-200 hover:text-accent hover:bg-accent/[0.05] transition-all duration-200 text-sm font-medium flex items-center gap-1 cursor-pointer"
                 >
                   {language === 'en' ? 'EN' : 'AR'}
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>

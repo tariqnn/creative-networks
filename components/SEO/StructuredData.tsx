@@ -11,7 +11,7 @@ export default function StructuredData() {
       name: 'Creative Networks',
       alternateName: 'Creative Networks Services',
       url: 'https://creativenetworkservices.com',
-      logo: 'https://creativenetworkservices.com/logo/no-background.png',
+      logo: 'https://www.creativnetworks.com/logo/creative-networks.png',
       description: 'Leading software development company and tech agency in Amman, Jordan. Specializing in web development, mobile apps, cloud systems, and ERP solutions.',
       address: {
         '@type': 'PostalAddress',
@@ -46,7 +46,7 @@ export default function StructuredData() {
       '@type': 'LocalBusiness',
       '@id': 'https://creativenetworkservices.com/#organization',
       name: 'Creative Networks',
-      image: 'https://creativenetworkservices.com/logo/no-background.png',
+      image: 'https://www.creativnetworks.com/logo/creative-networks.png',
       url: 'https://creativenetworkservices.com',
       telephone: '+962795550073',
       email: 'info@creativnetworks.com',

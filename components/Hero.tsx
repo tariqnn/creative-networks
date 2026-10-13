@@ -45,7 +45,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none opacity-[0.015]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+            'linear-gradient(rgba(18,58,91,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(18,58,91,0.12) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }}
       />
@@ -75,7 +75,7 @@ export default function Hero() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-7xl sm:text-8xl md:text-9xl font-heading font-black tracking-tight leading-[0.9] inline-block"
               style={{
-                background: 'linear-gradient(to right, #818CF8, #22D3EE, #34D399)',
+                background: 'linear-gradient(to right, #123A5B, #60798E, #A5AAAF)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -87,16 +87,16 @@ export default function Hero() {
         </div>
 
         {/* Interactive 3D card — per integration prompt */}
-        <Card className="w-full bg-black/[0.96] relative overflow-hidden border-white/10 rounded-2xl mt-6 md:h-[560px]">
-          <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+        <Card className="w-full bg-white relative overflow-hidden border-accent/10 rounded-2xl mt-6 md:h-[560px] shadow-[0_24px_80px_rgba(18,58,91,0.10)]">
+          <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#A5AAAF" />
 
           <div className="flex flex-col md:flex-row md:h-full">
             {/* Left content */}
             <div className="flex-1 p-6 sm:p-8 md:p-12 relative z-10 flex flex-col justify-center">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-surface-50 to-surface-400">
                 Interactive 3D
               </h2>
-              <p className="mt-4 text-neutral-300 max-w-lg text-base md:text-lg leading-relaxed">
+              <p className="mt-4 text-surface-300 max-w-lg text-base md:text-lg leading-relaxed">
                 {t('hero.subtitle')}
               </p>
 
@@ -128,7 +128,7 @@ export default function Hero() {
               </div>
 
               {/* Stats */}
-              <div className="flex items-center gap-6 sm:gap-8 mt-10 pt-6 border-t border-white/[0.08]">
+              <div className="flex items-center gap-6 sm:gap-8 mt-10 pt-6 border-t border-accent/[0.10]">
                 {[
                   { value: '5+', label: 'Years' },
                   { value: '50+', label: 'Projects' },

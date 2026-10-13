@@ -76,9 +76,9 @@ export const metadata: Metadata = {
     description: 'Top-rated software development company and tech agency in Amman, Jordan. Specializing in web development, mobile apps, cloud systems, and ERP solutions. Serving MENA region and worldwide.',
     images: [
       {
-        url: '/logo/no-background.png',
-        width: 1200,
-        height: 630,
+        url: '/logo/creative-networks.png',
+        width: 2170,
+        height: 725,
         alt: 'Creative Networks - Software Development Company',
       },
     ],
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Creative Networks - Software Development Company in Amman, Jordan',
     description: 'Leading tech company and software house in Amman, Jordan. Web development, mobile apps, cloud systems, and ERP solutions.',
-    images: ['/logo/no-background.png'],
+    images: ['/logo/creative-networks.png'],
     creator: '@creativenetworks',
   },
   alternates: {
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#09090B',
+  themeColor: '#FFFFFF',
 }
 
 export default function RootLayout({

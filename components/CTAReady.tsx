@@ -22,12 +22,12 @@ export default function CTAReady() {
   return (
     <section className="relative py-28 sm:py-36 overflow-hidden bg-surface-950">
       {/* Shader as full background */}
-      <div className="absolute inset-0 z-0 opacity-30">
+      <div className="absolute inset-0 z-0 opacity-[0.08]">
         <ShaderAnimation className="w-full h-full" />
       </div>
 
       {/* Dark overlay so text stays readable */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-surface-950/60 via-surface-950/30 to-surface-950/60" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/90 via-white/80 to-white/90" />
 
       {/* Edge fades */}
       <div className="absolute top-0 left-0 right-0 h-24 z-[2] bg-gradient-to-b from-surface-950 to-transparent pointer-events-none" />
@@ -45,7 +45,7 @@ export default function CTAReady() {
             <motion.a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              whileHover={{ scale: 1.03, boxShadow: '0 0 50px rgba(99,102,241,0.5)' }}
+              whileHover={{ scale: 1.03, boxShadow: '0 0 50px rgba(18,58,91,0.2)' }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-4 rounded-full bg-accent text-white font-heading font-bold text-lg cursor-pointer transition-colors duration-200 hover:bg-accent-dark"
             >

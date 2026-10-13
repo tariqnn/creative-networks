@@ -32,7 +32,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-900 border-t border-white/[0.04] relative overflow-hidden">
+    <footer className="bg-surface-900 border-t border-accent/[0.08] relative overflow-hidden">
       {/* Top gradient line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
@@ -47,11 +47,11 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <Image
-              src="/logo/no-background.png"
+              src="/logo/creative-networks.png"
               alt="Creative Networks"
-              width={140}
-              height={36}
-              className="h-9 w-auto mb-5 opacity-90"
+              width={210}
+              height={70}
+              className="h-12 w-auto mb-5"
             />
             <p className="text-surface-500 text-sm leading-relaxed max-w-sm mb-6">
               Creative Networks is a leading software development agency serving the MENA region and beyond. We build high-performance digital products that drive business growth.
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.04] pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-accent/[0.08] pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-surface-600 text-sm">
             &copy; {currentYear} Creative Networks. All rights reserved.
           </p>
