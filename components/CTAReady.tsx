@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Reveal from '@/components/animations/Reveal'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ShaderAnimation } from '@/components/ui/shader-animation'
 
 export default function CTAReady() {
   const { t } = useLanguage()
@@ -21,21 +20,10 @@ export default function CTAReady() {
 
   return (
     <section className="relative py-28 sm:py-36 overflow-hidden bg-accent text-white">
-      {/* Shader as full background */}
-      <div className="absolute inset-0 z-0 opacity-[0.08]">
-        <ShaderAnimation className="w-full h-full" />
-      </div>
-
-      {/* Brand-tinted overlay keeps the shader subdued */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-accent/95 via-accent/90 to-accent/95" />
-
-      {/* Edge fades */}
-      <div className="absolute top-0 left-0 right-0 h-24 z-[2] bg-gradient-to-b from-accent to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 z-[2] bg-gradient-to-t from-accent to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-light mb-6">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-surface-700 mb-6">
             {t('cta.label')}
           </p>
           <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-heading font-black text-white leading-none mb-10">

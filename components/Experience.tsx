@@ -47,10 +47,6 @@ export default function Experience() {
 
   return (
     <section className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/[0.04] rounded-full blur-[150px]" />
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero stat */}
         <Reveal className="text-center mb-24">

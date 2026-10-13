@@ -26,6 +26,14 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false)
+    }
+    if (isMenuOpen) document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMenuOpen])
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement
       if (isLangMenuOpen && !target.closest('.language-selector')) {
@@ -144,7 +152,8 @@ export default function Navbar() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-surface-50 p-2 relative z-[10000] cursor-pointer"
-              aria-label="Toggle menu"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
@@ -174,7 +183,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-surface-950/95 backdrop-blur-2xl z-[9998] md:hidden"
+              className="fixed inset-x-0 top-20 bottom-0 bg-surface-950/95 backdrop-blur-2xl z-[9998] md:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
             <motion.div
@@ -182,7 +191,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-[9999] md:hidden flex flex-col items-center justify-center px-6"
+              className="fixed inset-x-0 top-20 bottom-0 z-[9998] md:hidden flex flex-col items-center justify-center px-6"
             >
               <div className="w-full max-w-sm space-y-2">
                 {navLinks.map((link, index) => (

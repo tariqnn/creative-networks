@@ -56,7 +56,7 @@ const translations = {
       craftDesc: 'Exceptional design quality, clean code architecture, and long-term maintainability.',
     },
     experience: {
-      title: '5+ Years of Experience',
+      title: '7+ Years of Experience',
       subtitle: 'in building digital products, platforms, and internal systems.',
     },
     clients: {
@@ -150,7 +150,7 @@ const translations = {
       craftDesc: 'جودة تصميم استثنائية، وهندسة كود نظيفة، وقابلية صيانة طويلة الأمد.',
     },
     experience: {
-      title: 'أكثر من 5 سنوات من الخبرة',
+      title: 'أكثر من 7 سنوات من الخبرة',
       subtitle: 'في بناء المنتجات الرقمية والمنصات والأنظمة الداخلية.',
     },
     clients: {

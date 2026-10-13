@@ -6,6 +6,20 @@ import Reveal from '@/components/animations/Reveal'
 
 const portfolioItems = [
   {
+    label: 'Sports Website & Mobile App',
+    name: 'Palyo · PlayUp',
+    description: 'A sports platform built for Amman, bringing players together to find games, book sports venues, join tournaments, and connect with the local community through a website and companion mobile app.',
+    impact: 'A connected digital experience for discovering and taking part in local sports.',
+    features: ['Discover football, basketball, dodgeball, and tennis', 'Find games and book a place', 'Explore venues and sports academies', 'Tournaments, leaderboards, and community'],
+    tech: ['Next.js', 'PostgreSQL', 'Flutter', 'Firebase'],
+    image: undefined,
+    accentColor: 'from-accent/10 to-transparent',
+    metricColor: 'text-accent',
+    metric: 'Website + App',
+    metricLabel: 'Digital Platforms',
+    link: 'https://palyo.vercel.app/',
+  },
+  {
     label: 'Sports Academy Platform',
     name: 'SD13',
     description: 'A modern sports academy platform with high-performance landing page and full administrative system for content and athlete management.',
@@ -162,7 +176,7 @@ export default function Portfolio() {
                   {item.label}
                 </p>
                 <h3 className="text-lg font-heading font-bold text-surface-50 mb-3">
-                  {item.name}
+                  {item.link ? <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{item.name} ↗</a> : item.name}
                 </h3>
                 <p className="text-sm text-surface-400 leading-relaxed mb-5 flex-1">
                   {item.description}
