@@ -7,8 +7,8 @@ import Reveal from '@/components/animations/Reveal'
 const portfolioItems = [
   {
     label: 'Sports Website & Mobile App',
-    name: 'Palyo · PlayUp',
-    description: 'A sports platform built for Amman, bringing players together to find games, book sports venues, join tournaments, and connect with the local community through a website and companion mobile app.',
+    name: 'PlayUp',
+    description: 'A sports platform built for Amman, bringing players together to find games, book sports venues, join tournaments, and connect with the local community through its website and companion mobile app.',
     impact: 'A connected digital experience for discovering and taking part in local sports.',
     features: ['Discover football, basketball, dodgeball, and tennis', 'Find games and book a place', 'Explore venues and sports academies', 'Tournaments, leaderboards, and community'],
     tech: ['Next.js', 'PostgreSQL', 'Flutter', 'Firebase'],
