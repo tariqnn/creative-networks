@@ -39,7 +39,7 @@ export default function Experience() {
   const { t } = useLanguage()
 
   const stats = [
-    { value: 5, suffix: '+', label: 'Years Experience' },
+    { value: 7, suffix: '+', label: 'Years Experience' },
     { value: 50, suffix: '+', label: 'Projects Delivered' },
     { value: 30, suffix: '+', label: 'Happy Clients' },
     { value: 15, suffix: '+', label: 'Tech Stacks' },

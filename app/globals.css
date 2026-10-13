@@ -22,7 +22,7 @@
   }
 
   body {
-    @apply bg-white text-surface-50 font-body;
+    @apply bg-surface text-surface-50 font-body;
   }
 
   .font-arabic {
@@ -51,7 +51,7 @@
   }
 
   .glass-strong {
-    @apply bg-white/90 backdrop-blur-2xl border border-accent/[0.12];
+    @apply bg-surface-950/95 backdrop-blur-2xl border border-accent/[0.12];
   }
 
   .glow-accent {
@@ -60,6 +60,10 @@
 
   .glow-cyan {
     box-shadow: 0 0 60px -12px rgba(165, 170, 175, 0.2);
+  }
+
+  .brand-scene canvas {
+    filter: grayscale(0.72) saturate(0.72) contrast(1.02);
   }
 }
 

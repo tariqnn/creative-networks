@@ -10,18 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         surface: {
-          DEFAULT: '#FFFFFF',
+          DEFAULT: '#E8EDF1',
           50: '#123452',
           100: '#244663',
           200: '#405C74',
           300: '#526C82',
-          400: '#627B90',
-          500: '#788A9A',
-          600: '#8D9BA8',
-          700: '#CDD4DA',
-          800: '#E1E5E9',
-          900: '#F3F5F7',
-          950: '#FFFFFF',
+          400: '#526C82',
+          500: '#667E90',
+          600: '#7B8D9A',
+          700: '#C8D3DC',
+          800: '#D7E0E7',
+          900: '#E1E8ED',
+          950: '#EEF2F5',
         },
         accent: {
           DEFAULT: '#123A5B',

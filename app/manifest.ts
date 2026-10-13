@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Leading software development company and tech agency in Amman, Jordan.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#FFFFFF',
-    theme_color: '#FFFFFF',
+    background_color: '#E8EDF1',
+    theme_color: '#E8EDF1',
     icons: [
       {
         src: '/icons/icon-192.png',

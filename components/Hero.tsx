@@ -87,7 +87,7 @@ export default function Hero() {
         </div>
 
         {/* Interactive 3D card — per integration prompt */}
-        <Card className="w-full bg-white relative overflow-hidden border-accent/10 rounded-2xl mt-6 md:h-[560px] shadow-[0_24px_80px_rgba(18,58,91,0.10)]">
+        <Card className="w-full bg-surface-900 relative overflow-hidden border-accent/10 rounded-2xl mt-6 md:h-[560px] shadow-[0_24px_80px_rgba(18,58,91,0.12)]">
           <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#A5AAAF" />
 
           <div className="flex flex-col md:flex-row md:h-full">
@@ -107,7 +107,7 @@ export default function Hero() {
                     e.preventDefault()
                     handleScroll('#contact')
                   }}
-                  whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(99,102,241,0.4)' }}
+                  whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(18,58,91,0.22)' }}
                   whileTap={{ scale: 0.98 }}
                   className="px-7 py-3.5 rounded-full bg-accent text-white font-heading font-bold text-sm cursor-pointer hover:bg-accent-dark transition-colors duration-200 text-center"
                 >
@@ -130,7 +130,7 @@ export default function Hero() {
               {/* Stats */}
               <div className="flex items-center gap-6 sm:gap-8 mt-10 pt-6 border-t border-accent/[0.10]">
                 {[
-                  { value: '5+', label: 'Years' },
+                  { value: '7+', label: 'Years' },
                   { value: '50+', label: 'Projects' },
                   { value: '30+', label: 'Clients' },
                 ].map((stat) => (
@@ -143,10 +143,11 @@ export default function Hero() {
             </div>
 
             {/* Right — 3D scene */}
-            <div className="relative h-[300px] sm:h-[380px] md:h-auto md:flex-1 md:min-h-0">
+            <div className="relative h-[300px] sm:h-[380px] md:h-auto md:flex-1 md:min-h-0 overflow-hidden rounded-xl bg-[radial-gradient(ellipse_at_55%_45%,#dce5eb_0%,#cbd7e0_62%,#bac8d3_100%)]">
+              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(135deg,rgba(18,58,91,0.12),transparent_48%,rgba(165,170,175,0.24))]" />
               <SplineScene
                 scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
+                className="brand-scene relative z-[1] w-full h-full"
               />
             </div>
           </div>

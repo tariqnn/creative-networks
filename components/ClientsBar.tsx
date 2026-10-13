@@ -6,7 +6,7 @@ import Reveal from '@/components/animations/Reveal'
 const clients = [
   { name: 'SD13', logo: '/clients/client-1.png' },
   { name: 'Sahati Link', logo: '/clients/client-2.png' },
-  { name: 'Infinity Sport', logo: '/clients/client 3.jpeg' },
+  { name: 'Infinity Sports', logo: '/clients/client 3.jpeg' },
 ]
 
 const duplicatedClients = [...clients, ...clients, ...clients, ...clients]

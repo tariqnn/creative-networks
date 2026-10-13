@@ -20,7 +20,7 @@ const portfolioItems = [
   },
   {
     label: 'Full Facility System',
-    name: 'Infinity Sport',
+    name: 'Infinity Sports',
     description: 'Complete system for the whole facility including landing page, finance management for tracking payments and invoices, and internal portal for staff operations.',
     impact: 'Cut payment tracking time in half and gave management real-time visibility on all revenue streams.',
     features: ['Landing page', 'Finance dashboard', 'Internal portal', 'Real-time metrics'],

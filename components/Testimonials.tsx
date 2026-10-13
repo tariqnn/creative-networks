@@ -6,21 +6,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 const testimonials = [
   {
     quote: 'Creative Networks transformed our digital presence. Their attention to detail and commitment to excellence is unmatched. The team delivered beyond our expectations.',
-    name: 'Murad Q.',
-    role: 'COO – Casio Jordan',
-    initials: 'MQ',
+    name: 'Samer Nino',
+    role: 'Infinity Sports',
+    initials: 'SN',
   },
   {
     quote: 'Working with Creative Networks has been a game-changer. They understood our vision and brought it to life with innovative solutions and flawless execution.',
-    name: 'Sarah Al-Mansouri',
-    role: 'CEO – TechVentures',
-    initials: 'SM',
-  },
-  {
-    quote: 'The professionalism and technical expertise of Creative Networks is outstanding. They delivered a complex system on time and within budget.',
-    name: 'Ahmed Hassan',
-    role: 'CTO – Digital Solutions',
-    initials: 'AH',
+    name: 'Sam Daghlas',
+    role: 'SD13',
+    initials: 'SD',
   },
 ]
 
