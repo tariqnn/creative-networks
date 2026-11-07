@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Reveal from '@/components/animations/Reveal'
 import { useLanguage } from '@/contexts/LanguageContext'
+import ProductVisual from '@/components/ProductVisual'
 
 export default function Services() {
   const { t } = useLanguage()
@@ -14,24 +14,21 @@ export default function Services() {
       title: t('services.websiteTitle'),
       description: t('services.websiteDesc'),
       tech: ['React', 'Next.js', 'Node.js', 'WordPress', 'TypeScript'],
-      image: '/services/web-platforms.jpg',
-      imageAlt: 'Product designers reviewing a web experience in an Amman studio',
+      visual: 'web' as const,
     },
     {
       category: t('services.mobileCategory'),
       title: t('services.mobileTitle'),
       description: t('services.mobileDesc'),
       tech: ['Flutter', 'React Native', 'Kotlin', 'Swift'],
-      image: '/services/mobile-apps.jpg',
-      imageAlt: 'A mobile sports booking experience used courtside in Amman',
+      visual: 'mobile' as const,
     },
     {
       category: t('services.saasCategory'),
       title: t('services.saasTitle'),
       description: t('services.saasDesc'),
       tech: ['Node.js', 'NestJS', 'PostgreSQL', 'AWS'],
-      image: '/services/business-systems.jpg',
-      imageAlt: 'A business operator reviewing financial reports in a daylight office',
+      visual: 'systems' as const,
     },
   ]
 
@@ -73,23 +70,8 @@ export default function Services() {
               className="glass rounded-2xl overflow-hidden group cursor-default"
             >
               {/* Image */}
-              <div className="relative h-60 overflow-hidden bg-surface-800 sm:h-64">
-                <motion.div
-                  className="absolute inset-0"
-                  initial={{ scale: 1.08 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                >
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </motion.div>
+              <div className="relative h-60 overflow-hidden sm:h-64">
+                <ProductVisual kind={service.visual} compact />
               </div>
 
               {/* Body */}

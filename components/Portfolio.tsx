@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Reveal from '@/components/animations/Reveal'
+import ProductVisual from '@/components/ProductVisual'
 
 const portfolioItems = [
   {
@@ -13,8 +14,7 @@ const portfolioItems = [
     impact: 'A connected digital experience for discovering and taking part in local sports.',
     features: ['Discover football, basketball, dodgeball, and tennis', 'Find games and book a place', 'Explore venues and sports academies', 'Tournaments, leaderboards, and community'],
     tech: ['Next.js', 'PostgreSQL', 'Flutter', 'Firebase'],
-    image: '/projects/playup-discovery.jpg',
-    imageAlt: 'Amman players checking a game before heading to an outdoor football pitch',
+    visual: 'playup' as const,
     accentColor: 'from-accent/10 to-transparent',
     metricColor: 'text-accent',
     metric: 'Website + App',
@@ -28,8 +28,7 @@ const portfolioItems = [
     impact: 'Increased online registrations by 45% and reduced manual coordination time for coaches by 30%.',
     features: ['High-speed landing page', 'Full admin panel', 'Multi-role permissions', 'Analytics tracking'],
     tech: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
-    image: '/projects/sd13-academy.jpg',
-    imageAlt: 'A football academy coach leading a training drill on a local pitch',
+    visual: 'sd13' as const,
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+45%',
@@ -42,8 +41,7 @@ const portfolioItems = [
     impact: 'Cut payment tracking time in half and gave management real-time visibility on all revenue streams.',
     features: ['Landing page', 'Finance dashboard', 'Internal portal', 'Real-time metrics'],
     tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-    image: '/projects/infinity-facility.jpg',
-    imageAlt: 'A sports facility manager reviewing operations beside the indoor court',
+    visual: 'infinity' as const,
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '50%',
@@ -162,24 +160,16 @@ export default function Portfolio() {
             >
               {/* Project cover */}
               <div className="relative h-56 overflow-hidden bg-surface-800 sm:h-64">
-                {item.image ? (
-                  item.image.startsWith('/projects/') ? (
-                    <Image
-                      src={item.image}
-                      alt={item.imageAlt ?? `${item.name} project`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <Image
-                      src={item.image}
-                      alt={item.imageAlt ?? item.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                  )
+                {item.visual ? (
+                  <ProductVisual kind={item.visual} compact />
+                ) : item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt ?? 'Project interface preview'}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
                 ) : (
                   <div className="text-center">
                     <p className={`text-4xl font-heading font-black ${item.metricColor} leading-none`}>{item.metric}</p>
