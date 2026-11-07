@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Services from '@/components/Services'
+import CinematicStory from '@/components/CinematicStory'
 import TrustSection from '@/components/TrustSection'
 import Experience from '@/components/Experience'
 import ClientsBar from '@/components/ClientsBar'
@@ -25,6 +26,7 @@ export default function Home() {
       <Hero />
       <ClientsBar />
       <Services />
+      <CinematicStory />
       <Portfolio />
       <Experience />
       <TrustSection />

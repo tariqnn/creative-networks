@@ -13,7 +13,8 @@ const portfolioItems = [
     impact: 'A connected digital experience for discovering and taking part in local sports.',
     features: ['Discover football, basketball, dodgeball, and tennis', 'Find games and book a place', 'Explore venues and sports academies', 'Tournaments, leaderboards, and community'],
     tech: ['Next.js', 'PostgreSQL', 'Flutter', 'Firebase'],
-    image: '/projects/playup.svg',
+    image: '/projects/playup-discovery.jpg',
+    imageAlt: 'Amman players checking a game before heading to an outdoor football pitch',
     accentColor: 'from-accent/10 to-transparent',
     metricColor: 'text-accent',
     metric: 'Website + App',
@@ -27,7 +28,8 @@ const portfolioItems = [
     impact: 'Increased online registrations by 45% and reduced manual coordination time for coaches by 30%.',
     features: ['High-speed landing page', 'Full admin panel', 'Multi-role permissions', 'Analytics tracking'],
     tech: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
-    image: '/clients/client-1.png',
+    image: '/projects/sd13-academy.jpg',
+    imageAlt: 'A football academy coach leading a training drill on a local pitch',
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+45%',
@@ -40,7 +42,8 @@ const portfolioItems = [
     impact: 'Cut payment tracking time in half and gave management real-time visibility on all revenue streams.',
     features: ['Landing page', 'Finance dashboard', 'Internal portal', 'Real-time metrics'],
     tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-    image: '/clients/client 3.jpeg',
+    image: '/projects/infinity-facility.jpg',
+    imageAlt: 'A sports facility manager reviewing operations beside the indoor court',
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '50%',
@@ -54,6 +57,7 @@ const portfolioItems = [
     features: ['Real-time communication', 'HD video calls', 'Online appointments', 'HIPAA-grade security'],
     tech: ['React Native', 'Node.js', 'WebRTC', 'MongoDB', 'AWS'],
     image: '/clients/client-2.png',
+    imageAlt: 'Sahati Link healthcare application brand artwork',
     accentColor: 'from-emerald/20 to-transparent',
     metricColor: 'text-emerald',
     metric: '-35%',
@@ -67,6 +71,7 @@ const portfolioItems = [
     features: ['Secure auth & role management', 'Live inventory syncing', 'Dynamic product catalog', 'Optimized checkout'],
     tech: ['Laravel', 'React', 'JavaScript', 'AWS', 'Firebase'],
     image: '/projects/nexora-market.svg',
+    imageAlt: 'Nexora Market ecommerce project artwork',
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+40%',
@@ -80,6 +85,7 @@ const portfolioItems = [
     features: ['Real-time analytics', 'Content performance tracking', 'Multi-channel integration', 'Smooth transitions'],
     tech: ['React', 'TypeScript', 'Google Cloud'],
     image: '/projects/pulsemetrics.svg',
+    imageAlt: 'PulseMetrics analytics dashboard project artwork',
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '-70%',
@@ -93,6 +99,7 @@ const portfolioItems = [
     features: ['Class booking & scheduling', 'Membership management', 'Personalized programs', 'Push notifications'],
     tech: ['Flutter', 'Firebase'],
     image: '/projects/flexmotion.svg',
+    imageAlt: 'FlexMotion gym and class booking project artwork',
     accentColor: 'from-emerald/20 to-transparent',
     metricColor: 'text-emerald',
     metric: '+52%',
@@ -106,6 +113,7 @@ const portfolioItems = [
     features: ['AI lead scoring', 'Smart email drafting', 'Advanced reporting', 'Role-based access'],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'OpenAI API'],
     image: '/projects/skyline-crm.svg',
+    imageAlt: 'Skyline CRM project artwork',
     accentColor: 'from-accent/20 to-transparent',
     metricColor: 'text-accent-light',
     metric: '+38%',
@@ -119,6 +127,7 @@ const portfolioItems = [
     features: ['Video courses', 'Webcam-proctored exams', 'Certificates & achievements', 'AI study recommendations'],
     tech: ['MERN Stack', 'WebRTC'],
     image: '/projects/edunova.svg',
+    imageAlt: 'EduNova online learning platform project artwork',
     accentColor: 'from-cyan/20 to-transparent',
     metricColor: 'text-cyan',
     metric: '4,000+',
@@ -151,18 +160,24 @@ export default function Portfolio() {
               whileHover={{ y: -4, transition: { duration: 0.3 } }}
               className="glass rounded-2xl overflow-hidden group cursor-default flex flex-col"
             >
-              {/* Client logo or gradient header */}
-              <div className={`relative h-40 bg-gradient-to-b ${item.accentColor} flex items-center justify-center p-8`}>
+              {/* Project cover */}
+              <div className="relative h-56 overflow-hidden bg-surface-800 sm:h-64">
                 {item.image ? (
                   item.image.startsWith('/projects/') ? (
-                    <Image src={item.image} alt={`${item.name} project artwork`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt ?? `${item.name} project`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
                   ) : (
                     <Image
                       src={item.image}
-                      alt={item.name}
-                      width={180}
-                      height={90}
-                      className="object-contain max-h-24 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
+                      alt={item.imageAlt ?? item.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                   )
                 ) : (

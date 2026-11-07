@@ -14,27 +14,24 @@ export default function Services() {
       title: t('services.websiteTitle'),
       description: t('services.websiteDesc'),
       tech: ['React', 'Next.js', 'Node.js', 'WordPress', 'TypeScript'],
-      image: '/services/website.jpg',
-      accent: 'from-accent/20 to-cyan/10',
-      badge: 'bg-accent/10 text-accent-light border-accent/20',
+      image: '/services/web-platforms.jpg',
+      imageAlt: 'Product designers reviewing a web experience in an Amman studio',
     },
     {
       category: t('services.mobileCategory'),
       title: t('services.mobileTitle'),
       description: t('services.mobileDesc'),
       tech: ['Flutter', 'React Native', 'Kotlin', 'Swift'],
-      image: '/services/mobile.png',
-      accent: 'from-cyan/20 to-accent/10',
-      badge: 'bg-cyan/10 text-cyan border-cyan/20',
+      image: '/services/mobile-apps.jpg',
+      imageAlt: 'A mobile sports booking experience used courtside in Amman',
     },
     {
       category: t('services.saasCategory'),
       title: t('services.saasTitle'),
       description: t('services.saasDesc'),
       tech: ['Node.js', 'NestJS', 'PostgreSQL', 'AWS'],
-      image: '/services/erp.png',
-      accent: 'from-emerald/20 to-accent/10',
-      badge: 'bg-emerald/10 text-emerald border-emerald/20',
+      image: '/services/business-systems.jpg',
+      imageAlt: 'A business operator reviewing financial reports in a daylight office',
     },
   ]
 
@@ -76,26 +73,28 @@ export default function Services() {
               className="glass rounded-2xl overflow-hidden group cursor-default"
             >
               {/* Image */}
-              <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${service.accent}`}>
+              <div className="relative h-60 overflow-hidden bg-surface-800 sm:h-64">
                 <motion.div
                   className="absolute inset-0"
+                  initial={{ scale: 1.08 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
                 >
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt={service.imageAlt}
                     fill
-                    className="object-cover opacity-80"
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-950/60 via-transparent to-transparent" />
               </div>
 
               {/* Body */}
               <div className="p-7">
-                <span className={`inline-block text-[10px] font-bold tracking-[0.25em] uppercase px-3 py-1 rounded-full border ${service.badge} mb-4`}>
+                <span className="mb-4 inline-block rounded-full border border-accent/10 bg-lime/50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
                   {service.category}
                 </span>
                 <h3 className="text-xl font-heading font-bold text-surface-50 mb-3 leading-tight">
