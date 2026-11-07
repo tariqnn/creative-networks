@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Reveal from '@/components/animations/Reveal'
 import { useLanguage } from '@/contexts/LanguageContext'
-import ProductVisual from '@/components/ProductVisual'
 
 export default function Services() {
   const { t } = useLanguage()
@@ -14,36 +14,39 @@ export default function Services() {
       title: t('services.websiteTitle'),
       description: t('services.websiteDesc'),
       tech: ['React', 'Next.js', 'Node.js', 'WordPress', 'TypeScript'],
-      visual: 'web' as const,
+      image: '/photography/story-design.jpg',
+      imageAlt: t('services.webImageAlt'),
     },
     {
       category: t('services.mobileCategory'),
       title: t('services.mobileTitle'),
       description: t('services.mobileDesc'),
       tech: ['Flutter', 'React Native', 'Kotlin', 'Swift'],
-      visual: 'mobile' as const,
+      image: '/photography/service-mobile.jpg',
+      imageAlt: t('services.mobileImageAlt'),
     },
     {
       category: t('services.saasCategory'),
       title: t('services.saasTitle'),
       description: t('services.saasDesc'),
       tech: ['Node.js', 'NestJS', 'PostgreSQL', 'AWS'],
-      visual: 'systems' as const,
+      image: '/photography/service-systems.jpg',
+      imageAlt: t('services.systemsImageAlt'),
     },
   ]
 
   return (
-    <section id="services" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
+    <section id="services" className="relative overflow-hidden bg-[#f6f9fa] py-24 text-[#183b57] sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <Reveal className="mb-20">
-          <p className="text-sm font-semibold tracking-[0.3em] text-accent uppercase mb-4">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#52718a]">
             {t('services.whatWeDo')}
           </p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-surface-50 leading-tight max-w-2xl">
+          <h2 className="max-w-2xl font-heading text-4xl font-bold leading-tight text-[#183b57] sm:text-5xl md:text-6xl">
             {t('services.title')}
           </h2>
-          <p className="mt-4 text-lg text-surface-400 max-w-xl leading-relaxed">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#5d7483]">
             {t('services.subtitle')}
           </p>
         </Reveal>
@@ -67,29 +70,29 @@ export default function Services() {
                 show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
               }}
               whileHover={{ y: -4, transition: { duration: 0.3, ease: 'easeOut' } }}
-              className="glass rounded-2xl overflow-hidden group cursor-default"
+              className="group cursor-default overflow-hidden rounded-2xl border border-[#dce5e8] bg-white shadow-[0_18px_50px_-38px_rgba(24,59,87,.38)]"
             >
               {/* Image */}
               <div className="relative h-60 overflow-hidden sm:h-64">
-                <ProductVisual kind={service.visual} compact />
+                <Image src={service.image} alt={service.imageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
               </div>
 
               {/* Body */}
               <div className="p-7">
-                <span className="mb-4 inline-block rounded-full border border-accent/10 bg-lime/50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
+                <span className="mb-4 inline-block rounded-full bg-[#edf4e5] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#496c34]">
                   {service.category}
                 </span>
-                <h3 className="text-xl font-heading font-bold text-surface-50 mb-3 leading-tight">
+                <h3 className="mb-3 font-heading text-xl font-bold leading-tight text-[#183b57]">
                   {service.title}
                 </h3>
-                <p className="text-surface-400 text-sm leading-relaxed mb-6">
+                <p className="mb-6 text-sm leading-relaxed text-[#5d7483]">
                   {service.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {service.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-surface-800 text-surface-400 border border-surface-700"
+                      className="rounded-full border border-[#e2e9eb] bg-[#f7f9fa] px-2.5 py-1 text-[11px] font-medium text-[#667e8c]"
                     >
                       {tech}
                     </span>
