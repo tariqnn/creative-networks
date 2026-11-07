@@ -19,23 +19,25 @@ export default function CTAReady() {
   }
 
   return (
-    <section className="relative py-28 sm:py-36 overflow-hidden bg-accent text-white">
+    <section className="relative overflow-hidden bg-lime py-24 text-accent sm:py-32">
+      <div aria-hidden="true" className="absolute -right-14 -top-20 h-72 w-72 rounded-full border-[1px] border-black/10 sm:h-96 sm:w-96" />
+      <div aria-hidden="true" className="absolute -bottom-32 -left-12 h-60 w-60 rounded-full border-[1px] border-black/10 sm:h-80 sm:w-80" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-surface-700 mb-6">
+          <p className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-accent/65">
             {t('cta.label')}
           </p>
-          <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-heading font-black text-white leading-none mb-10">
+          <h2 className="mb-10 text-6xl font-heading font-black leading-[.92] tracking-[-.06em] text-accent sm:text-7xl md:text-8xl lg:text-[7rem]">
             {t('cta.title')}
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, '#contact')}
-              whileHover={{ scale: 1.03, boxShadow: '0 0 50px rgba(220,228,234,0.24)' }}
+              whileHover={{ scale: 1.03, boxShadow: '0 12px 44px rgba(11,11,11,0.18)' }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 rounded-full bg-cyan-light text-accent font-heading font-bold text-lg cursor-pointer transition-colors duration-200 hover:bg-white"
+              className="cursor-pointer rounded-full bg-accent px-10 py-4 text-lg font-heading font-bold text-white transition-colors duration-200 hover:bg-[#292925]"
             >
               {t('cta.button')}
             </motion.a>
@@ -44,7 +46,7 @@ export default function CTAReady() {
               onClick={(e) => handleSmoothScroll(e, '#portfolio')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 rounded-full border border-white/30 bg-white/5 text-white font-heading font-medium text-lg cursor-pointer hover:bg-white/10 transition-colors duration-200"
+              className="cursor-pointer rounded-full border border-accent/20 bg-white/35 px-10 py-4 text-lg font-heading font-semibold text-accent transition-colors duration-200 hover:bg-white/75"
             >
               See our work
             </motion.a>

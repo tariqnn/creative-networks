@@ -33,7 +33,6 @@ export default function TrustSection() {
       {/* Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-accent/[0.10] to-transparent" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-accent/[0.10] to-transparent" />
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-accent/[0.04] rounded-full blur-[120px] -translate-y-1/2" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Big word + paragraph */}
@@ -41,7 +40,7 @@ export default function TrustSection() {
           <Reveal>
             <h2 className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-heading font-black text-surface-50 uppercase tracking-tight leading-none">
               {t('trust.title')}
-              <span className="inline-block w-3 h-3 rounded-full bg-accent ml-2 align-middle" />
+              <span className="ml-2 inline-block h-3 w-3 rounded-full bg-lime align-middle" />
             </h2>
           </Reveal>
           <Reveal delay={0.15} className="space-y-5">

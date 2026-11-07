@@ -40,11 +40,6 @@ export default function Services() {
 
   return (
     <section id="services" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
-        style={{ backgroundImage: 'linear-gradient(rgba(18,58,91,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(18,58,91,0.08) 1px, transparent 1px)', backgroundSize: '60px 60px' }}
-      />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <Reveal className="mb-20">

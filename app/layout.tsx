@@ -1,35 +1,39 @@
 import type { Metadata, Viewport } from 'next'
-import { Outfit, Rubik, Cairo } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import StructuredData from '@/components/SEO/StructuredData'
 import ChunkErrorHandler from '@/components/ChunkErrorHandler'
 
-const outfit = Outfit({
-  subsets: ['latin'],
+const outfit = localFont({
+  src: './fonts/outfit-latin.woff2',
   variable: '--font-outfit',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: '300 900',
 })
 
-const rubik = Rubik({
-  subsets: ['latin'],
+const rubik = localFont({
+  src: [
+    { path: './fonts/rubik-latin.woff2', weight: '300 900', style: 'normal' },
+    { path: './fonts/rubik-arabic.woff2', weight: '300 900', style: 'normal' },
+  ],
   variable: '--font-rubik',
-  weight: ['300', '400', '500', '600', '700'],
 })
 
-const cairo = Cairo({
-  subsets: ['arabic', 'latin'],
+const cairo = localFont({
+  src: [
+    { path: './fonts/cairo-latin.woff2', weight: '300 900', style: 'normal' },
+    { path: './fonts/cairo-arabic.woff2', weight: '300 900', style: 'normal' },
+  ],
   variable: '--font-cairo',
-  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://creativenetworkservices.com'),
+  metadataBase: new URL('https://www.creativnetworks.com'),
   title: {
-    default: 'Creative Networks - Leading Software Development Company in Amman, Jordan | Tech Agency',
+    default: 'Creative Networks — Digital Studio in Amman, Jordan',
     template: '%s | Creative Networks',
   },
-  description: 'Creative Networks is a leading software development company and tech agency in Amman, Jordan. We specialize in web development, mobile apps, cloud systems, and ERP solutions. Top-rated software house serving MENA region and worldwide.',
+  description: 'Built in Amman and made for the MENA region. Creative Networks designs and builds websites, mobile apps, and digital platforms for ambitious teams.',
   keywords: [
     'software development company',
     'tech company Jordan',
@@ -70,31 +74,31 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['ar_JO'],
-    url: 'https://creativenetworkservices.com',
+    url: 'https://www.creativnetworks.com',
     siteName: 'Creative Networks',
-    title: 'Creative Networks - Leading Software Development Company in Amman, Jordan',
-    description: 'Top-rated software development company and tech agency in Amman, Jordan. Specializing in web development, mobile apps, cloud systems, and ERP solutions. Serving MENA region and worldwide.',
+    title: 'Creative Networks — Digital Studio in Amman, Jordan',
+    description: 'Built in Amman and made for the MENA region. Creative Networks designs and builds websites, mobile apps, and digital platforms for ambitious teams.',
     images: [
       {
-        url: '/logo/creative-networks.png',
-        width: 2170,
-        height: 725,
-        alt: 'Creative Networks - Software Development Company',
+        url: '/logo/creative-networks-mark-black.jpg',
+        width: 600,
+        height: 600,
+        alt: 'Creative Networks logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Creative Networks - Software Development Company in Amman, Jordan',
-    description: 'Leading tech company and software house in Amman, Jordan. Web development, mobile apps, cloud systems, and ERP solutions.',
-    images: ['/logo/creative-networks.png'],
+    title: 'Creative Networks — Digital Studio in Amman, Jordan',
+    description: 'Websites, mobile apps, and digital platforms built in Amman for the MENA region.',
+    images: ['/logo/creative-networks-mark-black.jpg'],
     creator: '@creativenetworks',
   },
   alternates: {
-    canonical: 'https://creativenetworkservices.com',
+    canonical: 'https://www.creativnetworks.com',
     languages: {
-      'en-US': 'https://creativenetworkservices.com',
-      'ar-JO': 'https://creativenetworkservices.com/ar',
+      'en-US': 'https://www.creativnetworks.com',
+      'ar-JO': 'https://www.creativnetworks.com/ar',
     },
   },
   category: 'Technology',
@@ -108,7 +112,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#E8EDF1',
+  themeColor: '#F3EDE3',
 }
 
 export default function RootLayout({

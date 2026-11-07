@@ -59,7 +59,7 @@ export default function Experience() {
         </Reveal>
 
         {/* Stat grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-surface-800 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[2rem] bg-white/15 p-px shadow-[0_28px_80px_rgba(11,11,11,.18)] lg:grid-cols-4">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -67,12 +67,12 @@ export default function Experience() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="bg-surface-950 p-8 lg:p-12 text-center hover:bg-surface-900/60 transition-colors duration-300"
+              className="bg-[#0B0B0B] p-7 text-center transition-colors duration-300 hover:bg-[#1B1B18] sm:p-8 lg:p-12"
             >
               <p className="text-5xl sm:text-6xl font-heading font-black text-gradient mb-2">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="text-sm text-surface-500 font-medium uppercase tracking-wider">
+              <p className="text-sm font-medium uppercase tracking-wider text-white/55">
                 {stat.label}
               </p>
             </motion.div>

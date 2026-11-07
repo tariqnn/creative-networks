@@ -62,24 +62,18 @@ export default function Navbar() {
         initial={{ y: -12 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`fixed top-4 left-4 right-4 z-[9999] rounded-2xl transition-all duration-500 ${
-          isScrolled
-            ? 'bg-surface-900/95 backdrop-blur-2xl border border-accent/[0.10] shadow-[0_8px_32px_rgba(18,58,91,0.10)]'
-            : 'bg-surface-900/90 backdrop-blur-md border border-accent/[0.07]'
+        className={`liquid-nav fixed left-3 right-3 top-3 z-[9999] rounded-full transition-shadow duration-300 sm:left-5 sm:right-5 sm:top-4 ${
+          isScrolled ? 'shadow-[0_12px_42px_rgba(11,11,11,.14)]' : ''
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <motion.div whileHover={{ opacity: 0.8 }} transition={{ duration: 0.2 }} className="flex-shrink-0">
-              <Image
-                src="/logo/creative-networks.png"
-                alt="Creative Networks"
-                width={217}
-                height={73}
-                className="h-12 w-auto sm:h-14"
-              />
-            </motion.div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-[62px] items-center justify-between sm:h-[70px]">
+            <motion.a href="#home" whileHover={{ opacity: .82 }} transition={{ duration: .2 }} className="flex flex-shrink-0 items-center gap-2.5" aria-label="Creative Networks home">
+              <span className="relative h-10 w-10 overflow-hidden rounded-xl bg-white sm:h-11 sm:w-11">
+                <Image src="/logo/creative-networks-mark-black.jpg" alt="" fill sizes="44px" className="object-cover" priority />
+              </span>
+              <span className="whitespace-nowrap font-heading text-[13px] font-black leading-[.95] tracking-[-.035em] text-accent sm:text-base">CREATIVE NETWORKS</span>
+            </motion.a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
@@ -91,7 +85,7 @@ export default function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.08, duration: 0.3 }}
-                  className="relative px-4 py-2 text-sm font-medium text-surface-200 hover:text-accent transition-colors duration-200 cursor-pointer rounded-lg hover:bg-accent/[0.05]"
+                className="relative rounded-full px-4 py-2 text-sm font-semibold text-surface-300 transition-colors duration-200 hover:bg-white/70 hover:text-accent cursor-pointer"
                 >
                   {link.name}
                 </motion.a>
@@ -103,7 +97,7 @@ export default function Navbar() {
               <div className="relative language-selector">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="px-3 py-1.5 rounded-lg text-surface-200 hover:text-accent hover:bg-accent/[0.05] transition-all duration-200 text-sm font-medium flex items-center gap-1 cursor-pointer"
+                  className="flex cursor-pointer items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-surface-300 transition-all duration-200 hover:bg-white/70 hover:text-accent"
                 >
                   {language === 'en' ? 'EN' : 'AR'}
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -142,7 +136,7 @@ export default function Navbar() {
                 onClick={(e) => handleSmoothScroll(e, '#contact')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2 rounded-full bg-accent text-white text-sm font-semibold hover:bg-accent-dark transition-colors duration-200 cursor-pointer"
+                className="cursor-pointer rounded-full bg-lime px-5 py-2.5 text-sm font-bold text-accent shadow-[0_4px_16px_rgba(198,255,0,.25)] transition-transform duration-200 hover:-translate-y-0.5"
               >
                 {t('nav.getInTouch')}
               </motion.a>
@@ -151,22 +145,22 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-surface-50 p-2 relative z-[10000] cursor-pointer"
+              className="relative z-[10000] cursor-pointer rounded-full p-2 text-accent transition-colors hover:bg-white/70 md:hidden"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
                   animate={isMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-6 bg-surface-50 rounded-full origin-center"
+                  className="block h-0.5 w-6 origin-center rounded-full bg-accent"
                 />
                 <motion.span
                   animate={isMenuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                  className="block h-0.5 w-6 bg-surface-50 rounded-full"
+                  className="block h-0.5 w-6 rounded-full bg-accent"
                 />
                 <motion.span
                   animate={isMenuOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-6 bg-surface-50 rounded-full origin-center"
+                  className="block h-0.5 w-6 origin-center rounded-full bg-accent"
                 />
               </div>
             </button>
@@ -256,7 +250,7 @@ export default function Navbar() {
                 <motion.a
                   href="#contact"
                   onClick={(e) => handleSmoothScroll(e, '#contact')}
-                  className="block w-full px-6 py-3 rounded-full bg-accent text-white text-base font-semibold text-center cursor-pointer hover:bg-accent-dark transition-colors duration-200"
+                  className="block w-full rounded-full bg-lime px-6 py-3 text-center text-base font-bold text-accent transition-colors duration-200 hover:bg-lime-light"
                 >
                   {t('nav.getInTouch')}
                 </motion.a>

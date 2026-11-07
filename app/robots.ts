@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://creativenetworkservices.com/sitemap.xml',
+    sitemap: 'https://www.creativnetworks.com/sitemap.xml',
   }
 }
 

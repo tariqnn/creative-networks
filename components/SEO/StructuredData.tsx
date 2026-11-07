@@ -10,8 +10,8 @@ export default function StructuredData() {
       '@type': 'Organization',
       name: 'Creative Networks',
       alternateName: 'Creative Networks Services',
-      url: 'https://creativenetworkservices.com',
-      logo: 'https://www.creativnetworks.com/logo/creative-networks.png',
+      url: 'https://www.creativnetworks.com',
+      logo: 'https://www.creativnetworks.com/logo/creative-networks-mark-black.jpg',
       description: 'Leading software development company and tech agency in Amman, Jordan. Specializing in web development, mobile apps, cloud systems, and ERP solutions.',
       address: {
         '@type': 'PostalAddress',
@@ -44,10 +44,10 @@ export default function StructuredData() {
     const localBusinessSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': 'https://creativenetworkservices.com/#organization',
+      '@id': 'https://www.creativnetworks.com/#organization',
       name: 'Creative Networks',
-      image: 'https://www.creativnetworks.com/logo/creative-networks.png',
-      url: 'https://creativenetworkservices.com',
+      image: 'https://www.creativnetworks.com/logo/creative-networks-mark-black.jpg',
+      url: 'https://www.creativnetworks.com',
       telephone: '+962795550073',
       email: 'info@creativnetworks.com',
       address: {
@@ -155,12 +155,12 @@ export default function StructuredData() {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'Creative Networks',
-      url: 'https://creativenetworkservices.com',
+      url: 'https://www.creativnetworks.com',
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://creativenetworkservices.com/?s={search_term_string}',
+          urlTemplate: 'https://www.creativnetworks.com/?s={search_term_string}',
         },
         'query-input': 'required name=search_term_string',
       },

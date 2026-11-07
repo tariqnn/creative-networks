@@ -83,14 +83,10 @@ export default function Contact() {
     },
   ]
 
-  const inputClass = "w-full px-4 py-3 rounded-xl bg-surface-800 border border-surface-700 text-surface-50 placeholder:text-surface-600 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all duration-200 text-sm"
+  const inputClass = "w-full rounded-xl border border-surface-700 bg-white/75 px-4 py-3 text-sm text-surface-50 placeholder:text-surface-500 transition-all duration-200 focus:border-lime-ink focus:outline-none focus:ring-2 focus:ring-lime/50"
 
   return (
     <section id="contact" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/[0.04] rounded-full blur-[150px]" />
-      </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="mb-16">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">
@@ -241,7 +237,7 @@ export default function Contact() {
                   className={`w-full py-4 rounded-xl font-heading font-bold text-base transition-all duration-200 cursor-pointer ${
                     isSubmitting
                       ? 'bg-accent/40 text-white/60 cursor-not-allowed'
-                      : 'bg-accent text-white hover:bg-accent-dark'
+                      : 'bg-lime text-accent hover:bg-lime-light'
                   }`}
                 >
                   {isSubmitting ? (language === 'ar' ? 'جاري الإرسال...' : 'Sending...') : t('contact.sendMessage')}

@@ -16,7 +16,7 @@ export default function WhatsAppFloat() {
       transition={{ delay: 1.5, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 z-[9998] flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-full px-5 py-3 shadow-lg shadow-black/30 hover:shadow-[#25D366]/30 transition-all duration-300 group cursor-pointer"
+      className="fixed bottom-6 right-6 z-[9998] flex cursor-pointer items-center gap-3 rounded-full bg-lime px-5 py-3 text-accent shadow-lg shadow-lime/25 transition-all duration-300 hover:bg-lime-light hover:shadow-lime/35 group"
       aria-label="Contact us on WhatsApp"
     >
       <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

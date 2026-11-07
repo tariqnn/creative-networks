@@ -131,10 +131,6 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-28 sm:py-36 bg-surface-950 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none opacity-[0.012]"
-        style={{ backgroundImage: 'linear-gradient(rgba(18,58,91,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(18,58,91,0.08) 1px, transparent 1px)', backgroundSize: '60px 60px' }}
-      />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="mb-20">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">Our work</p>

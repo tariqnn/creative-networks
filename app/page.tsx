@@ -13,8 +13,8 @@ import WhatsAppFloat from '@/components/WhatsAppFloat'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Creative Networks - Leading Software Development Company in Amman, Jordan',
-  description: 'Top-rated software development company and tech agency in Amman, Jordan. Specializing in web development, mobile apps, cloud systems, and ERP solutions. Serving MENA region and worldwide.',
+  title: 'Creative Networks — Digital Studio in Amman, Jordan',
+  description: 'Built in Amman and made for the MENA region. Creative Networks designs and builds websites, mobile apps, and digital platforms for ambitious teams.',
   keywords: 'software development company, tech company Jordan, software house Amman, web development Jordan, mobile app development, cloud systems, ERP development',
 }
 
@@ -23,13 +23,13 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Services />
-      <TrustSection />
-      <Experience />
       <ClientsBar />
+      <Services />
+      <Portfolio />
+      <Experience />
+      <TrustSection />
       <Testimonials />
       <CTAReady />
-      <Portfolio />
       <Contact />
       <Footer />
       <WhatsAppFloat />
